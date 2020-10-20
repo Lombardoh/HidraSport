@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+
+<section class="articles container-fluid">
+    <div class="row">
+        <div class="col-sm-1"> 
+            {% for image in images %}   
+            <img src="{% static image.image.url %}" alt="">
+            {% endfor %}
+        </div>   
+        <div class="row col-sm-4">
+            <h1>detalle</h1>
+            <h4>{{ articulo.titulo }}</h4>
+            <p>{{ articulo.precio }}</p>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

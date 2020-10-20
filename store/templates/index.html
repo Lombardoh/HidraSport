@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+
+
+<section class="hero">
+</section>
+
+<section class="belowhero">
+    <h2>De atletas para atletas</h2>
+</section>
+
+<section id="main" class="container-fluid">
+    <div class="row">
+        {% for seccion in secciones %}
+        <div class="col-sm-6">
+            <div class="img-main">
+                <img src="{% static seccion.imagen.url %}" alt="">
+            </div>
+            <h2>{{ seccion.nombre }}</h2>
+
+            <a href="http://127.0.0.1:8000/{{seccion.categorias.nombre}}"
+               class="btn btn-primary">
+                Ver mas
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<p>holder {{lomejor.length}}</p>
+<section id="bestof" class="container-fluid">
+    <div class="bestof-title">
+        <h1>Lo mejor de Hidra Sport</h1>
+    </div>
+    
+    <div class="bestof-display row">
+        {% for x in lomejor %}
+        <div class="col-sm-5  col-md-2">
+            <div class="img-best">
+                <img src="{% static x.imagen.url %}" alt="">
+            </div>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus quisquam voluptas animi culpa deserunt maxime cumque.
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+<section class="footer">
+    <div>asdasdasd</div>
+</section>    
+
+{% endblock %}

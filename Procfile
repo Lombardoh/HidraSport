@@ -1,0 +1,1 @@
+web: gunicorn hidrasport.wsgi --log-file -
