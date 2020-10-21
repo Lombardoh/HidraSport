@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')0c_t^pu-f7%4v5j)^6x@zy#v!t%ps%ty#b8w&vz8&x#_g-zxa'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -37,7 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'store'
+    'store',
+    'register',
+    'cart',
+    'cartapp',
+    'import_export',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processor.cart_total_amount',
             ],
         },
     },
@@ -121,7 +127,7 @@ STATIC_URL = '/static/'
 #STATICFILES_DIRS = [
 #    os.path.join(BASE_DIR, 'static'),
 #]
-MEDIA_ROOT = os.path.join(BASE_DIR, 'homepage/static/media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
 MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK="bootstrap4"
