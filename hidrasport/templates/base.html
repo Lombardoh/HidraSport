@@ -18,12 +18,12 @@
                 <li class="top-item">
                     Bienvenido {{user.username}}
                 </li>
-            <li class="top-item"><a href="http://127.0.0.1:8000/logout/">Salir</a></li>
+            <li class="top-item"><a href="/logout/">Salir</a></li>
             {% else %}
-            <li class="top-item"><a href="http://127.0.0.1:8000/register">Crear Cuenta</a></li>
-            <li class="top-item"><a href="http://127.0.0.1:8000/login/">Iniciar sesion</a></li>
+            <li class="top-item"><a href="/register">Crear Cuenta</a></li>
+            <li class="top-item"><a href="/login/">Iniciar sesion</a></li>
             {% endif %}
-            <li class="top-item"><a href="http://127.0.0.1:8000/cart-detail/">carrito</a></li>
+            <li class="top-item"><a href="/cart-detail/">carrito</a></li>
         </ul>   
     </div>
 </section>
@@ -32,12 +32,12 @@
     <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbar5">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <span class="navbar-brand w-100"><a href="http://127.0.0.1:8000"><img src="../static/logo.png" class="logo" alt=""></a></span>
+    <span class="navbar-brand w-100"><a href="/"><img src="{% static 'logo.png' %}" class="logo" alt=""></a></span>
     <div class="navbar-collapse collapse w-100 justify-content-center" id="navbar5">
         <ul class="navbar-nav mx-auto">
             {% for x in destacadas %}
             <li class="nav-item">
-                <a class="nav-link" href="http://127.0.0.1:8000/productos/{{x.nombre}}">{{x.nombre}}</a></li>
+                <a class="nav-link" href="productos/{{x.nombre}}">{{x.nombre}}</a></li>
             {% endfor %}
         </ul>
     </div>
