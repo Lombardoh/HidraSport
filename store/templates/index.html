@@ -14,13 +14,13 @@
 <section id="main" class="container-fluid">
     <div class="row">
         {% for seccion in secciones %}
-        <div class="col-sm-6">
+        <div class="col-sm-6 section-item">
             <div class="img-main">
                 <img src="{% static seccion.imagen.url %}" alt="">
             </div>
             <h2>{{ seccion.nombre }}</h2>
 
-            <a href="http://127.0.0.1:8000/{{seccion.categorias.nombre}}"
+            <a href="/{{seccion.categorias.nombre}}"
                class="btn btn-primary">
                 Ver mas
             </a>
@@ -48,10 +48,6 @@
         {% endfor %}
     </div>
 </section>
-
-
-<section class="footer">
-    <div>asdasdasd</div>
-</section>    
+   
 
 {% endblock %}

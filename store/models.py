@@ -9,14 +9,19 @@ class Categorias(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
-    descripcion = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
-    last_modified = models.DateTimeField(auto_now=True)
+    Modelo = models.CharField(max_length=100)
+    sexo = models.CharField(max_length=50)
+    color = models.CharField(max_length=50)
+    detalle = models.CharField(max_length=50)
+    talle = models.CharField(max_length=50)
+    cantidad = models.IntegerField(default=0)
+    largo = models.CharField(max_length=50)
+    cadera = models.CharField(max_length=50)
+    tiro = models.CharField(max_length=50)
     image = models.ImageField(upload_to='products/')
     secundaria = models.ImageField(upload_to='products/')
     categorias = models.ManyToManyField('Categorias', related_name='categorias')
     price = models.FloatField()
-    cantidad = models.IntegerField(default=0)
     oferta = models.BooleanField(default=False)
     LoMejor = models.BooleanField(default=False)
     def __str__(self):
@@ -24,7 +29,7 @@ class Product(models.Model):
     
 class Secciones(models.Model):
     nombre = models.CharField(max_length=100)
-    imagen = models.ImageField(upload_to='images/')
+    imagen = models.ImageField(upload_to='images/', help_text="La imagen debe ser 1.5 mas ancha que alta. Minimo 1000x670px ")
     categorias = models.OneToOneField('Categorias', related_name='secciones', on_delete=models.CASCADE)
     
 class Images(models.Model):

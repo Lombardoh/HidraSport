@@ -111,6 +111,10 @@ navbarSupportedContent{
     max-width: 90%;
 }
 
+.section-item{
+    margin-bottom: 3rem;
+}
+
 .img-main{
     max-height: 55vh;
     overflow: hidden;
@@ -197,6 +201,9 @@ navbarSupportedContent{
 }
 /*-------------------footer--------------*/
 .footer{
+    font-size: 2rem;
+    color: white;
     background-color: black;
     height: 20vh;
+    padding-top: 4rem;
 }

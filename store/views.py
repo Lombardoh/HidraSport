@@ -15,7 +15,7 @@ def index(request):
     return render(request, 'index.html', context)
 
 def filtro(request, categoria):
-    articulos = Product.objects.filter( categorias__nombre__contains=categoria).order_by('-created_on')
+    articulos = Product.objects.filter( categorias__nombre__contains=categoria).order_by('name')
     destacadas=Categorias.objects.filter(destacada=True)
     banner=Categorias.objects.filter(nombre=categoria)
     context = {
