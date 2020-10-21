@@ -12,7 +12,7 @@ class Product(models.Model):
     descripcion = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
-    portada = models.ImageField(upload_to='products/')
+    image = models.ImageField(upload_to='products/')
     secundaria = models.ImageField(upload_to='products/')
     categorias = models.ManyToManyField('Categorias', related_name='categorias')
     price = models.FloatField()

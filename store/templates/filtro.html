@@ -29,7 +29,7 @@
             {% for articulo in articulos %}
 
             <div class="col-sm-3 article">
-                
+                <img src="{% static articulo.image.url %}" alt="">
                 <h4>{{ articulo.titulo }}</h4>
                 <p>{{ articulo.precio }}</p>
                 <a href="{% url 'articulo_detalle' articulo.pk %}"
