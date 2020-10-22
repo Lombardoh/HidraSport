@@ -10,7 +10,7 @@ def register(response):
         if form.is_valid():
             form.save()
         
-        return redirect("http://127.0.0.1:8000/")
+        return redirect("/")
     else:
         form = RegisterForm()
         
@@ -18,3 +18,6 @@ def register(response):
         "form":form,
         'destacadas':destacadas}
     return render(response, 'register/register.html', context)
+
+
+    

@@ -5,12 +5,35 @@
 
 {% block page_content %}
 
-<div class="container">
-    <form method="post" class="form-group">
+
+
+<div class="container creation-form">
+
+    <h1>Crear cuenta</h1>
+
+    <form method="post" action="">
         {% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit" class="btn btn-success">Register</button>
+        <label for="{{form.username.label}}">Nombre</label><br>
+        {{form.username}}<br><br>
+
+        <label for="{{form.email.label}}">{{form.email.label}}</label><br>
+        {{form.email}}<br><br>
+
+        <label for="{{form.email.label}}">Contraseña</label><br>
+        {{form.password1}}<br><br>
+
+        <label for="{{form.email.label}}">Confirmar contraseña</label><br>
+        {{form.password2}}<br><br>
+
+        <input type="submit" value="Crear usuario" name="Crear usuario" class="btn btn-dark btn-lg btn-block">
     </form>
 </div>
 
 {% endblock %}
+
+
+<!--<form method="post" class="form-group">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Registrarse</button>
+    </form>-->

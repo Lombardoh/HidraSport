@@ -199,6 +199,46 @@ navbarSupportedContent{
 .lastrow{
     background-color: yellow;
 }
+/*-------------------registration--------------*/
+
+.creation-form{
+    font-size: 1.5rem;
+    margin: 5rem 0rem;
+}
+
+.creation-form h1{
+    font-size: 4rem;
+    margin-left: 40%;
+}
+
+.creation-form form{
+    margin: auto;
+    width: 70%;
+}
+
+.creation-form input {
+  width: 100%;
+}
+
+.login-form{
+    font-size: 1.5rem;
+    margin: 5rem 0rem;
+}
+
+.login-form h1{
+    font-size: 4rem;
+    margin-left: 40%;
+}
+
+.login-form form{
+    margin: auto;
+    width: 70%;
+}
+
+.login-form input {
+  width: 100%;
+}
+
 /*-------------------footer--------------*/
 .footer{
     font-size: 2rem;
@@ -206,4 +246,5 @@ navbarSupportedContent{
     background-color: black;
     height: 20vh;
     padding-top: 4rem;
+    min-height: 40vh;
 }
