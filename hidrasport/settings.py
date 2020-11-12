@@ -91,13 +91,13 @@ if DEBUG:
     }
 else:
     DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'hidrasport',
-        'USER': 'hidrabadwolfo',
-        'PASSWORD': 'compit01',
-        'HOST': 'localhost',
-        'PORT': '',
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'hidrasport',
+            'USER': 'hidrabadwolfo',
+            'PASSWORD': 'compit01',
+            'HOST': 'localhost',
+            'PORT': '',
     }
 }
 
