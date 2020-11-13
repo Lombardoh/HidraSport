@@ -60,7 +60,7 @@ section{
 /*-------------------Nav----------------------*/
 .logo{
     
-    width: 15%;
+    width: 22rem;
 }
 
 nav{
@@ -73,7 +73,7 @@ navbarSupportedContent{
 }
 
 .nav-link{
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: black !important;
     margin: auto 2rem;
     text-transform: uppercase;
