@@ -25,7 +25,7 @@ SECRET_KEY = ')0c_t^pu-f7%4v5j)^6x@zy#v!t%ps%ty#b8w&vz8&x#_g-zxa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['134.209.65.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -82,24 +82,24 @@ WSGI_APPLICATION = 'hidrasport.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-#if DEBUG:
-#    DATABASES = {
-#        'default': {
-#            'ENGINE': 'django.db.backends.sqlite3',
-#            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#        }
-#    }
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'hidrasport',
-        'USER': 'hidrabadwolfo',
-        'PASSWORD': 'compit01',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'hidrasport',
+#        'USER': 'hidrabadwolfo',
+#        'PASSWORD': 'compit01',
+#        'HOST': 'localhost',
+#        'PORT': '',
+#    }
+#}
 
 
 
