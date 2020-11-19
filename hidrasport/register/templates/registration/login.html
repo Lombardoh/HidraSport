@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} Create an Account {% endblock %}
+{% load crispy_forms_tags %}
+
+{% block page_content %}
+
+
+<div class="container login-form">
+
+    <h1>Iniciar sesión</h1>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        <label for="{{form.username.label}}">Nombre</label><br>
+        {{form.username}}<br><br>
+
+        <label for="{{form.email.label}}">Contraseña</label><br>
+        {{form.password}}<br><br>
+
+        <input type="submit" value="Iniciar sesión" name="Crear usuario" class="btn btn-dark btn-lg btn-block">
+    </form>
+</div>
+
+
+{% endblock %}

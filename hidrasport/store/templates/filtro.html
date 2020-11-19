@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+
+{% for x in banner %}
+    <div class="sectionbanner">
+        <img src="{% static x.imagen.url %}" alt="">
+    </div>
+{% endfor %}
+
+<section class="articles container-fluid">
+    <div class="row">
+        <div class="col-sm-3 sidebar">
+            <div class="sidelist">
+                <h1>Talle</h1>
+                <ul>
+                    <li>30</li>
+                    <li>34</li>
+                    <li>36</li>
+                    <li>38</li>
+                    <li>40</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row col-sm-9">
+
+            {% for articulo in articulos %}
+
+            <div class="col-sm-3 article">
+                <img src="{% static articulo.image.url %}" alt="">
+                <h4>{{ articulo.titulo }}</h4>
+                <p>{{ articulo.precio }}</p>
+                <a href="{% url 'articulo_detalle' articulo.pk %}"
+                   class="btn btn-primary">
+                    Ver mas
+                </a>
+                <a href="{% url 'cart_add' articulo.pk %}" class="btn btn-primary">Add To Cart</a>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
