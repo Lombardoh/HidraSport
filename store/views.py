@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from store.models import Product, Categorias, Secciones, Images
+from store.models import Product, Categorias, Secciones, Images, Talles
+
+from django.db.models import Count, Max
 
 # def function name
 
@@ -7,6 +9,24 @@ def index(request):
     secciones = Secciones.objects.all()
     lomejor = Product.objects.filter(categorias__nombre__contains="lomejor")
     destacadas=Categorias.objects.filter(destacada=True)
+    
+    unique_fields = ['name', 'descripcion','sexo', 'color', 'guard', 'diseño', 'detalle_color']
+
+    duplicates = (
+    Product.objects.values(*unique_fields)
+    .order_by()
+    .annotate(max_id=Max('id'), count_id=Count('id'))
+    .filter(count_id__gt=1)
+    )
+
+    for duplicate in duplicates:
+        (
+        Product.objects
+        .filter(**{x: duplicate[x] for x in unique_fields})
+        .exclude(id=duplicate['max_id'])
+        .delete()
+    )
+    
     context = {
         "secciones": secciones,
         "lomejor": lomejor,
