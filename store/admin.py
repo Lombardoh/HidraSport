@@ -1,8 +1,8 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
 from store.models import Product, Categorias, Secciones, Images, Talles
-from import_export.widgets import ManyToManyWidget, ForeignKeyWidget
-from import_export import fields, resources
+from store.resource import ImagesResource, TallesResource
+
 
 admin.site.site_header = "HidraSport Admin"
 
@@ -14,21 +14,6 @@ class ImagesAdmin(admin.TabularInline):
 class TallesAdmin(admin.TabularInline):
     model = Talles
         
-#resources
-
-
-class ImagesResource(resources.ModelResource):
-
-    class Meta:
-        model = Images
-        fields = ('image', 'product__name')
-
-class TallesResource(resources.ModelResource):
-
-    class Meta:
-        model = Talles
-        fields = ('id',	'product__name', 'talle', 'product__id', 'cantidad',
-)
     
 #admin registers
 
@@ -43,7 +28,7 @@ class CategoriastAdmin(admin.ModelAdmin):
 @admin.register(Product)
 class ProductAdmin(ImportExportModelAdmin):
     #resource_class = ProductResource
-    list_display = ('id', "name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', "image")
+    #list_display = ("name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', "image")
     inlines = [ImagesAdmin, TallesAdmin]
     
     def lista_categorias(self, obj):
@@ -53,6 +38,7 @@ class ProductAdmin(ImportExportModelAdmin):
 @admin.register(Talles)
 class TallesAdmin(ImportExportModelAdmin):
     resource_class = TallesResource
+    list_display = ('id', 'product', 'talle', 'cantidad')
     pass
 
 @admin.register(Images)

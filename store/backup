@@ -1,4 +1,3 @@
-from django.db import models
 
 class Categorias(models.Model):
     nombre = models.CharField(max_length=20)
@@ -25,7 +24,6 @@ class Product(models.Model):
 #    price = models.FloatField()
 #    oferta = models.BooleanField(default=False)
 #    lomejor = models.BooleanField(default=False)
-    visible = models.BooleanField(default=False)
     def __str__(self):
         return self.name
     
@@ -60,3 +58,52 @@ class Images(models.Model): #expense
     product = models.ForeignKey(Product, default=None, on_delete=models.CASCADE)
     def __str__(self):
         return '{}'.format(self.product.name)
+        
+        
+        ----------
+
+admin.site.site_header = "HidraSport Admin"
+
+#inlines
+
+class ImagesAdmin(admin.TabularInline):
+    model = Images
+
+class TallesAdmin(admin.TabularInline):
+    model = Talles
+        
+    
+#admin registers
+
+class SeccionesAdmin(admin.ModelAdmin):
+    list_display = ("nombre", "categorias", "imagen")    
+    pass
+
+class CategoriastAdmin(admin.ModelAdmin):
+    list_display = ("nombre", "destacada")
+    pass
+
+@admin.register(Product)
+class ProductAdmin(ImportExportModelAdmin):
+    #resource_class = ProductResource
+    #list_display = ("name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', "image")
+    inlines = [ImagesAdmin, TallesAdmin]
+    
+    def lista_categorias(self, obj):
+        return ", ".join([str(p) for p in obj.categorias.all()])
+#    pass
+
+@admin.register(Talles)
+class TallesAdmin(ImportExportModelAdmin):
+    resource_class = TallesResource
+    list_display = ('id', 'product', 'talle', 'cantidad')
+    pass
+
+@admin.register(Images)
+class ImagesAdmin(ImportExportModelAdmin):
+    resource_class = ImagesResource
+    pass
+
+
+admin.site.register(Categorias, CategoriastAdmin)
+admin.site.register(Secciones, SeccionesAdmin)
