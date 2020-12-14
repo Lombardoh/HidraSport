@@ -30,6 +30,7 @@ class CategoriastAdmin(admin.ModelAdmin):
 class ProductAdmin(ImportExportModelAdmin):
     
     list_display = ("name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', "image",)
+    list_filter = ("name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', "image",)
     inlines = [ImagesAdmin, TallesAdmin]
     actions = ['remover_duplicados',]
     
