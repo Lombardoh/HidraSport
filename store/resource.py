@@ -10,7 +10,7 @@ class ImagesResource(resources.ModelResource):
         fields = ('image', 'product__name')
 
 class TallesResource(resources.ModelResource):
-    product_id = fields.Field(widget=ForeignKeyWidget(Product, 'name'))
+    product_id = fields.Field(widget=ForeignKeyWidget(Product, 'pk'))
     class Meta:
         model = Talles
         fields = ('product_id',)
