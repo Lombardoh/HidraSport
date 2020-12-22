@@ -63,12 +63,12 @@ class ImportarAdmin(ImportExportModelAdmin):
 class ProductAdmin(ImportExportModelAdmin):
     
     list_display = ("id", 'codigo','subcodigo', "name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', "image",)
-    list_filter = ("name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', "image",)
+    list_filter = ("name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color',)
     inlines = [ImagesAdmin, TallesAdmin]
     #actions = ['remover_duplicados', 'popular_productos']
     
     class Media:
-        js = ["{% static 'list_filter_collapse.js' %}"]
+        js = ['main.js']
     
     def popular_productos(self, request, queryset):
         tallesACrear = (
