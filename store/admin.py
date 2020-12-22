@@ -67,6 +67,9 @@ class ProductAdmin(ImportExportModelAdmin):
     inlines = [ImagesAdmin, TallesAdmin]
     #actions = ['remover_duplicados', 'popular_productos']
     
+    class Media:
+        js = ["{% static 'list_filter_collapse.js' %}"]
+    
     def popular_productos(self, request, queryset):
         tallesACrear = (
         Product.objects.all()
