@@ -8,8 +8,40 @@ class Categorias(models.Model):
     def __str__(self):
         return self.nombre
     
+class Importar(models.Model):
+    codigo_de_barras = models.CharField(max_length=50)
+    codigo = models.CharField(max_length=50)
+    subcodigo = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
+    descripcion = models.CharField(max_length=50, blank=True, null=True)
+    sexo = models.CharField(max_length=50, blank=True, null=True)
+    color = models.CharField(max_length=50, blank=True, null=True)
+    guard = models.CharField(max_length=50, blank=True, null=True)
+    telas = models.CharField(max_length=50, blank=True, null=True)
+    diseño = models.CharField(max_length=50, blank=True, null=True)
+    detalle_color = models.CharField(max_length=50, blank=True, null=True)
+    image = models.ImageField(upload_to='products/')
+    secundaria = models.ImageField(upload_to='products/')
+    price = models.FloatField()
+    talle = models.CharField(max_length=20, blank=True, null=True)
+    codigo_de_barras = models.CharField(max_length=100)
+    largo = models.CharField(max_length=50, blank=True, null=True)
+    cadera = models.CharField(max_length=50, blank=True, null=True)
+    manga = models.CharField(max_length=50, blank=True, null=True)
+    siza = models.CharField(max_length=50, blank=True, null=True)
+    tiro = models.CharField(max_length=50, blank=True, null=True)
+    bajo_busto = models.CharField(max_length=50, blank=True, null=True)
+    cintura = models.CharField(max_length=50, blank=True, null=True)
+    ubicacion = models.CharField(max_length=50, blank=True, null=True)
+    tamaño_caja = models.CharField(max_length=50, blank=True, null=True)
+    cantidad = models.IntegerField(default = 0, blank=True, null=True)
+    
+    def __str__(self):
+        return self.name
+    
 class Product(models.Model):
     codigo_de_barras= models.IntegerField(default=0)
+    codigo = models.CharField(max_length=50)
     subcodigo = models.IntegerField(default=0)
     name = models.CharField(max_length=100)
     descripcion = models.CharField(max_length=50, blank=True, null=True)
@@ -35,21 +67,21 @@ class Product(models.Model):
     
 class Talles(models.Model):
     codigo_de_barras= models.IntegerField(default=0)
+    codigo = models.IntegerField(default=0)
     subcodigo = models.IntegerField(default=0)
     product = models.ForeignKey(Product, null = True, blank = True, on_delete=models.CASCADE)
     talle = models.CharField(max_length=20, blank=True, null=True)
     codigo_de_barras = models.CharField(max_length=100)
-#    largo = models.CharField(max_length=50, blank=True, null=True)
-#    cadera = models.CharField(max_length=50, blank=True, null=True)
-#    manga = models.CharField(max_length=50, blank=True, null=True)
-#    siza = models.CharField(max_length=50, blank=True, null=True)
-#    tiro = models.CharField(max_length=50, blank=True, null=True)
-#    bajo_busto = models.CharField(max_length=50, blank=True, null=True)
-#    cintura = models.CharField(max_length=50, blank=True, null=True)
-#    ubicacion = models.CharField(max_length=50, blank=True, null=True)
-#    tamaño_caja = models.CharField(max_length=50, blank=True, null=True)
+    largo = models.CharField(max_length=50, blank=True, null=True)
+    cadera = models.CharField(max_length=50, blank=True, null=True)
+    manga = models.CharField(max_length=50, blank=True, null=True)
+    siza = models.CharField(max_length=50, blank=True, null=True)
+    tiro = models.CharField(max_length=50, blank=True, null=True)
+    bajo_busto = models.CharField(max_length=50, blank=True, null=True)
+    cintura = models.CharField(max_length=50, blank=True, null=True)
+    ubicacion = models.CharField(max_length=50, blank=True, null=True)
+    tamaño_caja = models.CharField(max_length=50, blank=True, null=True)
     cantidad = models.IntegerField(default = 0, blank=True, null=True)
-    
     
     def __str__(self):
         return self.talle

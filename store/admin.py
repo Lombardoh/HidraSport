@@ -1,11 +1,11 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
-from store.models import Product, Categorias, Secciones, Images, Talles
+from store.models import Product, Categorias, Secciones, Images, Talles, Importar
 from store.resource import ImagesResource, TallesResource
 from django.db.models import Count, Max
 from django.core.management.color import no_style
 from django.db import connection
-
+from django.db.models import Q
 
 admin.site.site_header = "HidraSport Admin"
 
@@ -28,10 +28,43 @@ class CategoriastAdmin(admin.ModelAdmin):
     list_display = ("nombre", "destacada")
     pass
 
+@admin.register(Importar)
+class ImportarAdmin(ImportExportModelAdmin):
+    
+    list_display = ("id", 'codigo','subcodigo',"name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', "image",'talle', 'cantidad')
+    
+    actions = ['completar_productos_y_talles']
+    
+    def completar_productos_y_talles(self, request, queryset):
+        imported = (
+        Importar.objects.all()
+        )
+        
+        for imp in imported:
+            
+            
+            
+            if Product.objects.filter(codigo__contains = imp.codigo):     
+                z = Product.objects.all().get(codigo = imp.codigo)
+                if Talles.objects.filter(~Q(subcodigo__contains = imp.subcodigo), codigo__contains = imp.codigo):
+                    
+                    
+                    t = Talles(product = Product.objects.get(id=z.id), talle = imp.talle,codigo = imp.codigo, subcodigo = imp.subcodigo)
+                    t.save()
+            else:
+                p = Product(name = imp.name, codigo = imp.codigo, price = imp.price)
+                p.save()
+                t = Talles(product = Product.objects.get(id=p.id), talle = imp.talle, codigo = imp.codigo, subcodigo = imp.subcodigo)
+                t.save()
+            
+            
+            #t = Talles(product = Product.objects.get(id=talle.id), talle = "m")
+            #t.save()
+
 @admin.register(Product)
 class ProductAdmin(ImportExportModelAdmin):
     
-    list_display = ("id", "name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', "image",)
+    list_display = ("id", 'codigo','subcodigo', "name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', "image",)
     list_filter = ("name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', "image",)
     inlines = [ImagesAdmin, TallesAdmin]
     actions = ['remover_duplicados', 'popular_productos']
