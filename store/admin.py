@@ -49,17 +49,15 @@ class ImportarAdmin(ImportExportModelAdmin):
                 if Talles.objects.filter(~Q(subcodigo__contains = imp.subcodigo), codigo__contains = imp.codigo):
                     
                     
-                    t = Talles(product = Product.objects.get(id=z.id), talle = imp.talle,codigo = imp.codigo, subcodigo = imp.subcodigo)
+                    t = Talles(product = Product.objects.get(id=z.id), talle = imp.talle,codigo = imp.codigo, subcodigo = imp.subcodigo, codigo_de_barras = imp.codigo_de_barras, largo = imp.largo, cadera = imp.cadera, manga = imp.manga, siza = imp.siza, tiro = imp.tiro, bajo_busto = imp.bajo_busto, cintura = imp.cintura, cantidad =imp.cantidad)
                     t.save()
             else:
-                p = Product(name = imp.name, codigo = imp.codigo, price = imp.price)
+                p = Product(name = imp.name, codigo = imp.codigo, codigo_de_barras = imp.codigo_de_barras, price = imp.price, descripcion = imp.descripcion , sexo = imp.sexo, color = imp.color, guard = imp.guard, telas = imp.telas,diseño = imp.diseño, detalle_color = imp.detalle_color)
                 p.save()
-                t = Talles(product = Product.objects.get(id=p.id), talle = imp.talle, codigo = imp.codigo, subcodigo = imp.subcodigo)
+                t = Talles(product = Product.objects.get(id=p.id), talle = imp.talle, codigo = imp.codigo, subcodigo = imp.subcodigo, codigo_de_barras = imp.codigo_de_barras, largo = imp.largo, cadera = imp.cadera, manga = imp.manga, siza = imp.siza, tiro = imp.tiro, bajo_busto = imp.bajo_busto, cintura = imp.cintura, cantidad =imp.cantidad)
                 t.save()
             
             
-            #t = Talles(product = Product.objects.get(id=talle.id), talle = "m")
-            #t.save()
 
 @admin.register(Product)
 class ProductAdmin(ImportExportModelAdmin):
@@ -67,7 +65,7 @@ class ProductAdmin(ImportExportModelAdmin):
     list_display = ("id", 'codigo','subcodigo', "name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', "image",)
     list_filter = ("name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', "image",)
     inlines = [ImagesAdmin, TallesAdmin]
-    actions = ['remover_duplicados', 'popular_productos']
+    #actions = ['remover_duplicados', 'popular_productos']
     
     def popular_productos(self, request, queryset):
         tallesACrear = (

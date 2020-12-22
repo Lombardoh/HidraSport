@@ -38,11 +38,13 @@ class Importar(models.Model):
     
     def __str__(self):
         return self.name
+    class Meta:
+        verbose_name_plural = "Importar"
     
 class Product(models.Model):
-    codigo_de_barras= models.IntegerField(default=0)
+    codigo_de_barras= models.CharField(max_length=50)
     codigo = models.CharField(max_length=50)
-    subcodigo = models.IntegerField(default=0)
+    subcodigo = models.CharField(max_length=50)
     name = models.CharField(max_length=100)
     descripcion = models.CharField(max_length=50, blank=True, null=True)
     sexo = models.CharField(max_length=50, blank=True, null=True)
@@ -63,12 +65,14 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
+    class Meta:
+        verbose_name_plural = "Productos"
     
     
 class Talles(models.Model):
-    codigo_de_barras= models.IntegerField(default=0)
-    codigo = models.IntegerField(default=0)
-    subcodigo = models.IntegerField(default=0)
+    codigo_de_barras= models.CharField(max_length=50)
+    codigo = models.CharField(max_length=50)
+    subcodigo = models.CharField(max_length=50)
     product = models.ForeignKey(Product, null = True, blank = True, on_delete=models.CASCADE)
     talle = models.CharField(max_length=20, blank=True, null=True)
     codigo_de_barras = models.CharField(max_length=100)
@@ -85,6 +89,8 @@ class Talles(models.Model):
     
     def __str__(self):
         return self.talle
+    class Meta:
+        verbose_name_plural = "Talles"
 
     
 class Secciones(models.Model):
@@ -92,8 +98,14 @@ class Secciones(models.Model):
     imagen = models.ImageField(upload_to='images/', help_text="La imagen debe ser 1.5 mas ancha que alta. Minimo 1000x670px ")
     categorias = models.OneToOneField('Categorias', related_name='secciones', on_delete=models.CASCADE)
     
+    class Meta:
+        verbose_name_plural = "Secciones"
+    
 class Images(models.Model): #expense
     image = models.ImageField(upload_to='products/')
     product = models.ForeignKey(Product, default=None, on_delete=models.CASCADE)
     def __str__(self):
         return '{}'.format(self.product.name)
+    
+    class Meta:
+        verbose_name_plural = "Imagenes"
