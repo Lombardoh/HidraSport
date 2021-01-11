@@ -1,23 +1,33 @@
+//assign number to imgs in product view
 
-$(document).ready(function(){
-    $('.left-column img:first').addClass('active');
+
+$("document").ready(function () {
+        $.each($(".big-imgs img"), function(index, value){
+            var num = index + 1;
+            $(value).attr("data-attrib","productImg"+ num);
+        });
+    });
+
+$("document").ready(function () {
+        $.each($(".small-imgs img"), function(index, value){
+            var num = index + 1;
+            $(value).attr("data-attrib","productImg"+ num);
+        });
+    });
+
+$(document).ready(function() {
+
+  $('.small-imgs img').on('click', function() {
+      var imgNumber = $(this).attr('data-attrib');
+      
+      $('.active').removeClass('active');
+      $('[data-attrib = '+imgNumber+']').addClass('active');
+//      $(this).addClass('active');
+  });
+
 });
 
-
-//$(document).ready(function() {
-//
-//  $('.color-choose input').on('click', function() {
-//      var headphonesColor = $(this).attr('data-image');
-//
-//      $('.active').removeClass('active');
-//      $('.left-column img[data-image = ' + headphonesColor + ']').addClass('active');
-//      $(this).addClass('active');
-//  });
-//
-//});
-
-
-// Fancier version https://gist.github.com/985283 
+// Fancier version https://gist.github.com/985283 admin filter collapse
 
 $(document).ready(function($){
 ListFilterCollapsePrototype = {

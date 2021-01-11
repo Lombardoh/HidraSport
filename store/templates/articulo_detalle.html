@@ -3,13 +3,52 @@
 
 {% block page_content %}
 
+
+<div class="container">
+    <div class="row article-detail d-flex justify-content-between">
+        <div class="row col-sm-8 left-column">
+            <div class="small-imgs wrap col-sm-4">
+                {% for image in images %}
+                <div class="small-img-container">
+                    <img src="{% static image.image.url %}" alt="">
+                </div>
+                {% endfor %}
+            </div>
+            <div class="big-imgs col-sm-8">
+                {% for image in images %}
+                <div class="big-img-container">
+                    <img src="{% static image.image.url %}" alt="">
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="col-sm-4 right-column">
+            <h1>{{ articulo.name }}</h1>
+            <h3>{{articuli.price}}</h3>
+            <h5>Seleccionar Talle</h5>
+            <p>ver medios de pago</p>
+            S M L
+            <p>Calcular envios</p>
+
+            <p>Descripcion</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate excepturi soluta, nulla ex praesentium ipsam voluptates tenetur doloremque perferendis ea aperiam eos corporis tempora expedita quos reiciendis culpa aliquam porro.</p>
+
+            <p>Tabla de talles</p>
+
+            <p>Compartir</p>
+
+        </div>
+
+    </div>
+</div>
+
+<!--
+
 <section class="articles container-fluid">
     <div class="row">
-        <div class="col-sm-1"> 
-            {% for image in images %}   
-            <img src="{% static image.image.url %}" alt="">
-            {% endfor %}
-        </div>   
+        
         <div class="row col-sm-4">
             <h1>detalle</h1>
             <h4>{{ articulo.titulo }}</h4>
@@ -18,5 +57,8 @@
 
     </div>
 </section>
+
+
+-->
 
 {% endblock %}
