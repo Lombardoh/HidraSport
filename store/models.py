@@ -3,7 +3,7 @@ from django.db import models
 class Categorias(models.Model):
     nombre = models.CharField(max_length=20)
     destacada = models.BooleanField(default=False)
-#    imagen = models.ImageField(upload_to='images/')
+    imagen = models.ImageField(upload_to='images/')
     
     def __str__(self):
         return self.nombre

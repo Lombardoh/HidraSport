@@ -64,6 +64,77 @@ section {
 }
 
 /*-------------------Nav----------------------*/
+
+nav{
+    margin: auto;
+    width: 80%;
+    font-size: 2rem;
+    margin-top: 1.2rem;
+}
+
+nav ul{
+    list-style: none;
+}
+
+
+.menu > li{
+    display: inline-block;
+}
+
+.menu > li > a{
+    display: block;
+    padding: 15px 20px;
+    color: #353535;
+    font-family: 'Open sans';
+    text-decoration: none;
+}
+
+.menu li a:hover{
+    color: #CE7D35;
+    transition: all .3s; 
+}
+
+
+.submenu{
+    position: absolute;
+    background: #333333;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.5s;
+}
+
+.menu li:hover .submenu{
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.submenu li a{
+    display: block;
+    padding: 15px;
+    color: #fff;
+    font-family: 'Open sans';
+    text-decoration: none;
+}
+
+.search{
+    max-height: 5rem;
+    margin-top: 0.70rem;
+    max-width: 10rem;
+}
+
+.carrito-icon{
+    margin-top: 1rem;
+    margin-left: 3rem;
+    max-width: 4rem;
+}
+
+.search-icon{
+    margin-top: 1rem;
+    margin-left: 10rem;
+    max-width: 4rem;
+}
+
 .logo {
 
     width: 22rem;
@@ -93,6 +164,7 @@ navbarSupportedContent {
     background: url("../static/hero2.jpg") center no-repeat;
     background-size: cover;
     position: relative;
+    z-index: -1;
 
 }
 
