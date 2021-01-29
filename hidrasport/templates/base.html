@@ -9,6 +9,9 @@
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 </head>
 
 <section class="top-line">
@@ -30,13 +33,40 @@
 
 <nav class="">
     <div class="row">
-        <div class=""><span class="navbar-brand w-100"><a href="/"><img src="{% static 'logo.jpeg' %}" class="logo" alt=""></a></span></div>
+        <!--        <div class=""><span class="navbar-brand w-100"><a href="/"><img src="{% static 'logo.jpeg' %}" class="logo" alt=""></a></span></div>-->
         <ul class="menu">
-            <li><a href="#">HOMBRE</a>
-                <ul class="submenu">
-                    <li><a href="#">Natacion</a></li>
-                    <li><a href="#">Running</a></li>
-                    <li><a href="#">Ciclismo</a></li>
+            <li><a href="#">HOMBRE</a>  
+                <ul class="submenu d-flex ">
+                    <li><a href="#">Trajes de baño</a>
+                        <ul class="submenu-items">
+                            <li><a href="#">Bermudas</a></li>
+                            <li><a href="#">Shorts</a></li>
+                            <li><a href="#">Slips</a></li>
+                            <li><a href="#">Sungones</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Campera</a>
+                        <ul class="submenu-items">
+                            <li><a href="#">Deportiva</a></li>
+                            <li><a href="#">de abrigo</a></li>
+                            <li><a href="#">Rompe viento</a></li>
+                            <li><a href="#">Chaleco</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Remera</a>
+                        <ul class="submenu-items">
+                            <li><a href="#">Algodon</a></li>
+                            <li><a href="#">Deportivas</a></li>
+                            <li><a href="#">Musculosas</a></li>
+                            <li><a href="#">Primera piel</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Pantalones y calzas</a>
+                        <ul class="submenu-items">
+                            <li><a href="#">Jogging</a></li>
+                            <li><a href="#">Shorts deportivos</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
             <li><a href="#">MUJER</a>
@@ -61,10 +91,10 @@
                 </ul>
             </li>
         </ul>
-        
+
         <div class="search-icon"><a href="/"><img src="{% static 'search.png' %}" class="logo" alt=""></a></div>
         <input class="search" type="text" placeholder="Buscar..">
-        <div class="carrito-icon"><a href="/"><img src="{% static 'carrito.png' %}" class="logo" alt=""></a></div>
+        <div class="carrito-icon"><i class="icon-shopping-cart icon-large"></i></div>
     </div>
 </nav>
 
@@ -91,22 +121,34 @@
 {% endblock %}
 
 <section class="footer">
-    <div class="d-flex justify-content-around">
-        <div class="col-sm-3">
-            SUBSCRIBISTE Y RECIBÍ TODAS NUESTRAS NOVEDADES!
-        </div>
-        <div class="col-sm-3">
-            Contacto<br><br>
-            1155138066<br>
-            HIDRASPORT.ARG@GMAIL.COM<br>
-            15 DE AGOSTO<br>
-        </div>
-        <div class="col-sm-3">
-            Redes sociales<br>
-            <ion-icon name="logo-facebook"></ion-icon> <br>
-            <ion-icon name="logo-twitter"></ion-icon><br>
-            <ion-icon name="logo-pinterest"></ion-icon><br>
-            <ion-icon name="logo-instagram"></ion-icon><br>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-sm-3">
+                <h1>HIDRASPORT</h1>
+                <h2>De Atletas para Atletas</h2>
+                <div class="row social">
+                    <div class="social-icon">
+                        <p><i class="icon-facebook-sign icon-large"></i></p>
+                    </div>
+                    <div class="social-icon">
+                        <p><i class="icon-instagram icon-large"></i></p>
+                    </div>
+                    <div class="social-icon">
+                        <p><i class="icon-youtube icon-large"></i></p>
+                    </div>
+                    <div class="social-icon">
+                        <p><i class="icon-twitter icon-large"></i></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3">
+                <h2> Contacto</h2>
+
+                <p>HIDRASPORT.ARG@GMAIL.COM</p>
+                <p>15 DE AGOSTO</p>
+                <p>1155138066</p>
+            </div>
         </div>
     </div>
 </section>

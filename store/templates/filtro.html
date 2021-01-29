@@ -4,13 +4,15 @@
 {% block page_content %}
 
 {% for x in banner %}
-    <div class="sectionbanner">
-        <img src="{% static x.imagen.url %}" alt="">
-    </div>
+<div class="sectionbanner">
+    <img src="{% static x.imagen.url %}" alt="">
+</div>
 {% endfor %}
 
-<section class="articles container-fluid">
-    <div class="row">
+<section class="container-fluid catalog">
+    <div class="d-flex justify-content-center">
+        <div class="col-sm-10 row">
+            <!--
         <div class="col-sm-3 sidebar">
             <div class="sidelist">
                 <h1>Talle</h1>
@@ -23,24 +25,27 @@
                 </ul>
             </div>
         </div>
+-->
 
-        <div class="row col-sm-9">
+            <div class="articles row">
 
-            {% for articulo in articulos %}
+                {% for articulo in articulos %}
 
-            <div class="col-sm-3 article">
-                <img src="{% static articulo.image.url %}" alt="">
-                <h4>{{ articulo.titulo }}</h4>
-                <p>{{ articulo.precio }}</p>
+                <div class="article col-sm-3">
+                    <img src="{% static articulo.image.url %}" alt="">
+                    <h4>{{ articulo.name }}</h4>
+                    <p>{{ articulo.price }}</p>
+                    <!--
                 <a href="{% url 'articulo_detalle' articulo.pk %}"
                    class="btn btn-primary">
                     Ver mas
                 </a>
-                <a href="{% url 'cart_add' articulo.pk %}" class="btn btn-primary">Add To Cart</a>
+                <a href="{% url 'cart_add' articulo.pk %}" class="btn btn-primary">Agregar al carrito</a>
+-->
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
-
     </div>
 </section>
 
