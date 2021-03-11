@@ -33,68 +33,22 @@
 
 <nav class="">
     <div class="row">
-        <!--        <div class=""><span class="navbar-brand w-100"><a href="/"><img src="{% static 'logo.jpeg' %}" class="logo" alt=""></a></span></div>-->
-        <ul class="menu">
-            <li><a href="#">HOMBRE</a>  
+        <div class="col-sm-2"><span class="navbar-brand w-100"><a href="/"><img src="{% static 'logo.jpeg' %}" class="logo" alt=""></a></span></div>
+        <ul class="menu col-sm-5">
+           {% for x in destacadas %}
+            <li><a href="/productos/{{x.nombre}}">{{x.nombre}}</a>
                 <ul class="submenu d-flex ">
-                    <li><a href="#">Trajes de baño</a>
-                        <ul class="submenu-items">
-                            <li><a href="#">Bermudas</a></li>
-                            <li><a href="#">Shorts</a></li>
-                            <li><a href="#">Slips</a></li>
-                            <li><a href="#">Sungones</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Campera</a>
-                        <ul class="submenu-items">
-                            <li><a href="#">Deportiva</a></li>
-                            <li><a href="#">de abrigo</a></li>
-                            <li><a href="#">Rompe viento</a></li>
-                            <li><a href="#">Chaleco</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Remera</a>
-                        <ul class="submenu-items">
-                            <li><a href="#">Algodon</a></li>
-                            <li><a href="#">Deportivas</a></li>
-                            <li><a href="#">Musculosas</a></li>
-                            <li><a href="#">Primera piel</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Pantalones y calzas</a>
-                        <ul class="submenu-items">
-                            <li><a href="#">Jogging</a></li>
-                            <li><a href="#">Shorts deportivos</a></li>
-                        </ul>
-                    </li>
+                    
                 </ul>
             </li>
-            <li><a href="#">MUJER</a>
-                <ul class="submenu">
-                    <li><a href="#">Natacion</a></li>
-                    <li><a href="#">Running</a></li>
-                    <li><a href="#">Ciclismo</a></li>
-                </ul>
-            </li>
-            <li><a href="#">NIÑO</a>
-                <ul class="submenu">
-                    <li><a href="#">Natacion</a></li>
-                    <li><a href="#">Running</a></li>
-                    <li><a href="#">Ciclismo</a></li>
-                </ul>
-            </li>
-            <li><a href="#">DEPORTES</a>
-                <ul class="submenu">
-                    <li><a href="#">Natacion</a></li>
-                    <li><a href="#">Running</a></li>
-                    <li><a href="#">Ciclismo</a></li>
-                </ul>
-            </li>
+            {% endfor %}
         </ul>
 
-        <div class="search-icon"><a href="/"><img src="{% static 'search.png' %}" class="logo" alt=""></a></div>
-        <input class="search" type="text" placeholder="Buscar..">
-        <div class="carrito-icon"><i class="icon-shopping-cart icon-large"></i></div>
+        <div class="row col-sm-5 d-flex justify-content-end">
+            <div class="search-icon"><a href="/"><img src="{% static 'search.png' %}" class="logo" alt=""></a></div>
+            <input class="search" type="text" placeholder="Buscar..">
+            <div class="carrito-icon"><i class="icon-shopping-cart icon-large"></i></div>
+        </div>
     </div>
 </nav>
 

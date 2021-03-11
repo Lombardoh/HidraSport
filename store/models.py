@@ -7,6 +7,14 @@ class Categorias(models.Model):
     
     def __str__(self):
         return self.nombre
+
+class Subcategorias(models.Model):
+    nombre = models.CharField(max_length=20)
+    categoria = models.ForeignKey(Categorias, on_delete=models.CASCADE)
+    destacada = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return self.nombre
     
 class Importar(models.Model):
     codigo_de_barras = models.CharField(max_length=50)

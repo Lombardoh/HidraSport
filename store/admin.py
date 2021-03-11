@@ -1,6 +1,6 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
-from store.models import Product, Categorias, Secciones, Images, Talles, Importar
+from store.models import Product, Categorias, Secciones, Images, Talles, Importar, Subcategorias
 from store.resource import ImagesResource, TallesResource
 from django.db.models import Count, Max
 from django.core.management.color import no_style
@@ -25,6 +25,10 @@ class SeccionesAdmin(admin.ModelAdmin):
     pass
 
 class CategoriastAdmin(admin.ModelAdmin):
+    list_display = ("nombre", "destacada")
+    pass
+
+class SubcategoriastAdmin(admin.ModelAdmin):
     list_display = ("nombre", "destacada")
     pass
 
@@ -127,6 +131,7 @@ class ImagesAdmin(ImportExportModelAdmin):
 
 
 admin.site.register(Categorias, CategoriastAdmin)
+admin.site.register(Subcategorias, SubcategoriastAdmin)
 admin.site.register(Secciones, SeccionesAdmin)
 
 #---------- admin actions
