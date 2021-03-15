@@ -43,7 +43,7 @@
             <li><a href="/productos/{{cat.nombre}}">{{cat.nombre}}</a>
                 <ul class="submenu d-flex ">
                     {% for relobj in cat.subcategorias_set.all %}
-                    <li>{{ relobj.nombre }}</li>
+                    <li class="submenu-items"><a href="/productos/{{cat.nombre}}"> {{ relobj.nombre }}</a><li>
                     {% endfor %}
                 </ul>
             </li>
