@@ -67,7 +67,7 @@ section {
 nav{
     margin: auto;
     width: 80%;
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-top: 1.2rem;
     margin-bottom: 1.2rem;
 }
@@ -131,6 +131,7 @@ nav ul{
 }
 
 .carrito-icon{
+    max-height: 3rem;
     margin-top: 1rem;
     margin-left: 3rem;
     max-width: 4rem;

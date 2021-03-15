@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from store.models import Product, Categorias, Secciones, Images, Talles
+from store.models import Product, Categorias, Secciones, Images, Talles, Subcategorias
 
 from django.db.models import Count, Max
 
@@ -9,11 +9,13 @@ def index(request):
     secciones = Secciones.objects.all()
     lomejor = Product.objects.filter(categorias__nombre__contains="lomejor")
     destacadas=Categorias.objects.filter(destacada=True)
+    subcategorias = Subcategorias.objects.all()
     
     context = {
         "secciones": secciones,
         "lomejor": lomejor,
-        "destacadas": destacadas
+        "destacadas": destacadas,
+        "subcategorias": subcategorias
     }
     return render(request, 'index.html', context)
 
