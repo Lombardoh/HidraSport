@@ -8,9 +8,17 @@ class Categorias(models.Model):
     def __str__(self):
         return self.nombre
 
-class Subcategorias(models.Model):
+class SubCatCol(models.Model):
     nombre = models.CharField(max_length=20)
     categoria = models.ForeignKey(Categorias, on_delete=models.CASCADE)
+    destacada = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return self.nombre
+    
+class Subcategorias(models.Model):
+    nombre = models.CharField(max_length=20)
+    subcatcol = models.ForeignKey(SubCatCol, on_delete=models.CASCADE)
     destacada = models.BooleanField(default=False)
     
     def __str__(self):
