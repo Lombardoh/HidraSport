@@ -15,9 +15,6 @@
 </head>
 
 
-
-
-
 <section class="top-line">
     <div class="container-top-line">
         <ul class="top-list">
@@ -42,8 +39,13 @@
             {% for cat in destacadas %}
             <li><a href="/productos/{{cat.nombre}}">{{cat.nombre}}</a>
                 <ul class="submenu d-flex ">
-                    {% for relobj in cat.subcategorias_set.all %}
-                    <li class="submenu-items"><a href="/productos/{{cat.nombre}}"> {{ relobj.nombre }}</a><li>
+                    {% for col in cat.subcatcol_set.all %}
+                    <li class="submenu-cols"><a href="/productos/{{col.nombre}}"> {{ col.nombre }}</a>
+                    <ul>
+                        {%for subcat in col.subcategorias_set.all %}
+                        <li class="submenu-subcats"><a href="">{{subcat.nombre}}</a></li>
+                        {% endfor %}
+                    </ul></li>
                     {% endfor %}
                 </ul>
             </li>
@@ -57,6 +59,8 @@
         </div>
     </div>
 </nav>
+
+
 
 
 <!--
