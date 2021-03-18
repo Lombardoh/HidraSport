@@ -69,6 +69,7 @@ nav{
     width: 100%;
     top: 3rem;
     font-size: 3rem;
+    z-index: 1;
     
 }
 
@@ -94,15 +95,15 @@ nav ul{
 }
 
 .menu li a:hover{
-    color: white;
+    color: #7e7e7e;
     transition: all .3s; 
-    background-color: darkgrey;
+    background-color: #edeaea;
 }
 
 
 .submenu{
     position: absolute;
-    background: #333333;
+    background: #edeaea;
     opacity: 0;
     visibility: hidden;
     transition: opacity 1.5s;
@@ -115,28 +116,35 @@ nav ul{
 }
 
 
-.submenu li a{
+.submenu-cols a{
+    margin-top: 1.2rem;
     display: block;
-    padding: 15px;
-    color: #fff;
+    height: 10rem;
+    color: #959393;
     font-family: 'Open sans';
+    text-decoration: none;
+    font-size: 2.5rem;
     text-decoration: none;
 }
 
 .submenu-cols{
-    font-size: 2.5rem;
+    
+    
+    
 }
 
 .submenu-cols li a{
     display: block;
-    padding: 15px;
-    color: #fff;
+    color: #afabab;
     font-family: 'Open sans';
     text-decoration: none;
+    height: 4.5rem;
+    
+    
 }
 
 submenu-subcats{
-    font-size: 2rem;
+    
 }
 
 

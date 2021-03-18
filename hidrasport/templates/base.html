@@ -35,12 +35,12 @@
 <nav class="d-flex justify-content-center">
     <div class="row nav-bar col-sm-10">
         <div class="col-sm-2"><span class="navbar-brand w-100"><a href="/"><img src="{% static 'logo.jpeg' %}" class="logo" alt=""></a></span></div>
-        <ul class="menu col-sm-5">
+        <ul class="menu col-sm-7">
             {% for cat in destacadas %}
             <li><a href="/productos/{{cat.nombre}}">{{cat.nombre}}</a>
-                <ul class="submenu d-flex ">
+                <ul class="submenu row">
                     {% for col in cat.subcatcol_set.all %}
-                    <li class="submenu-cols"><a href="/productos/{{cat.nombre}}-{{col.nombre}}"> {{ col.nombre }}</a>
+                    <li class="submenu-cols col-sm-3"><a href="/productos/{{cat.nombre}}-{{col.nombre}}"> {{ col.nombre }}</a>
                     <ul>
                         {%for subcat in col.subcategorias_set.all %}
                         <li class="submenu-subcats"><a href="{{cat.nombre}} {{col.nombre}}">{{subcat.nombre}}</a></li>
@@ -52,7 +52,7 @@
             {% endfor %}
         </ul>
 
-        <div class="row col-sm-5 d-flex justify-content-end">
+        <div class="row col-sm-3 d-flex justify-content-end">
             <div class="search-icon"><a href="/"><img src="{% static 'search.png' %}" class="logo" alt=""></a></div>
             <input class="search" type="text" placeholder="Buscar..">
             <div class="carrito-icon"><i class="icon-shopping-cart icon-large"></i></div>
