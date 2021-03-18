@@ -32,18 +32,18 @@
     </div>
 </section>
 
-<nav class="">
-    <div class="row">
+<nav class="d-flex justify-content-center">
+    <div class="row nav-bar col-sm-10">
         <div class="col-sm-2"><span class="navbar-brand w-100"><a href="/"><img src="{% static 'logo.jpeg' %}" class="logo" alt=""></a></span></div>
         <ul class="menu col-sm-5">
             {% for cat in destacadas %}
             <li><a href="/productos/{{cat.nombre}}">{{cat.nombre}}</a>
                 <ul class="submenu d-flex ">
                     {% for col in cat.subcatcol_set.all %}
-                    <li class="submenu-cols"><a href="/productos/{{col.nombre}}"> {{ col.nombre }}</a>
+                    <li class="submenu-cols"><a href="/productos/{{cat.nombre}}-{{col.nombre}}"> {{ col.nombre }}</a>
                     <ul>
                         {%for subcat in col.subcategorias_set.all %}
-                        <li class="submenu-subcats"><a href="">{{subcat.nombre}}</a></li>
+                        <li class="submenu-subcats"><a href="{{cat.nombre}} {{col.nombre}}">{{subcat.nombre}}</a></li>
                         {% endfor %}
                     </ul></li>
                     {% endfor %}
@@ -61,25 +61,6 @@
 </nav>
 
 
-
-
-<!--
-<nav class="navbar navbar-expand-sm navbar-light bg-faded flex-nowrap">
-<button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbar5">
-<span class="navbar-toggler-icon"></span>
-</button>
-<span class="navbar-brand w-100"><a href="/"><img src="{% static 'logo.png' %}" class="logo" alt=""></a></span>
-<div class="navbar-collapse collapse w-100 justify-content-center" id="navbar5">
-<ul class="navbar-nav mx-auto">
-{% for x in destacadas %}
-<li class="nav-item">
-<a class="nav-link" href="/productos/{{x.nombre}}">{{x.nombre}}</a></li>
-{% endfor %}
-</ul>
-</div>
-<div class="w-100">spacer</div>
-</nav>
--->
 
 {% block page_content %}
 {% endblock %}

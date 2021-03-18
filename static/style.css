@@ -65,13 +65,15 @@ section {
 /*-------------------Nav----------------------*/
 
 nav{
-    top: 3rem;
-    margin: auto;
+    position: fixed;
     width: 100%;
+    top: 3rem;
     font-size: 3rem;
     
-    margin-bottom: 1.2rem;
-    position: fixed;
+}
+
+.nav-bar{
+    margin-top: 1.5rem;
 }
 
 nav ul{
@@ -94,7 +96,7 @@ nav ul{
 .menu li a:hover{
     color: white;
     transition: all .3s; 
-    background-color: #333333;
+    background-color: darkgrey;
 }
 
 
@@ -182,8 +184,9 @@ navbarSupportedContent {
 /*-------------------Hero----------------*/
 
 .hero {
+    top: 12rem;
     width: 100%;
-    height: 70vh;
+    height: 69vh;
     background: url("../static/hero.jfif") center no-repeat;
     background-size: cover;
     position: relative;
@@ -194,6 +197,7 @@ navbarSupportedContent {
 /*--------------------belowhero----------------*/
 
 .belowhero {
+    margin-top: 12rem;
     display: flex;
     background-color: black;
     color: white;
