@@ -35,13 +35,12 @@
                     <img src="{% static articulo.image.url %}" alt="">
                     <h4>{{ articulo.name }}</h4>
                     <p>{{ articulo.price }}</p>
-                    <!--
                 <a href="{% url 'articulo_detalle' articulo.pk %}"
                    class="btn btn-primary">
                     Ver mas
                 </a>
                 <a href="{% url 'cart_add' articulo.pk %}" class="btn btn-primary">Agregar al carrito</a>
--->
+
                 </div>
                 {% endfor %}
             </div>
