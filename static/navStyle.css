@@ -72,7 +72,7 @@ nav{
     transition-timing-function: ease-out;
 
     transition: 0.3s;
-    transform: translate(-100vh, 0%);
+    transform: translate(-100vw, 0%);
     
 }
 
@@ -132,7 +132,7 @@ nav{
     transition-timing-function: ease-out;
 
     transition: 0.3s;
-    transform: translate(-100vh, 0%);
+    transform: translate(-100vw, 0%);
 }
 
 .visible{
