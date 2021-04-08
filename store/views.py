@@ -31,6 +31,8 @@ def filtro(request, product):
     
     articulos = Product.objects.filter(query)
     
+    print(articulos)
+    
     for p in range(1, len(aux)):
         query = Q(categorias__nombre=aux[p])
         articulos = articulos.filter(query)

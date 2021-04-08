@@ -47,7 +47,7 @@ section {
 .hero {
     
     width: 100%;
-    height: 69vh;
+    height: 70vh;
     background: url("../static/hero.jfif") center no-repeat;
     background-size: cover;
     position: relative;
@@ -58,7 +58,7 @@ section {
 /*--------------------belowhero----------------*/
 
 .belowhero {
-    margin-top: 12rem;
+    margin-top: 0rem;
     display: flex;
     background-color: black;
     color: white;
@@ -73,20 +73,25 @@ section {
 
 /*-------------------main----------------*/
 
-#main {
-    max-width: 90%;
-}
 
 .section-item {
-    margin-bottom: 3rem;
+    
 }
 
 .img-main {
-    max-height: 55vh;
+    background-color: red;
+    max-height: 50vh;
     overflow: hidden;
 }
 
 /*-------------------Best----------------*/
+.red{
+    background-color: red;
+}
+
+.blue{
+    background-color: blue;
+}
 
 #bestof {
     max-width: 90%;
@@ -138,14 +143,6 @@ section {
     padding-left: 10rem;
 }
 
-.article{
-    
-    #margin: 1.5rem;
-}
-
-.article img{
-    #background-color: #e8e2e2;
-}
 
 .article.col-sm-3{
     padding: 0;

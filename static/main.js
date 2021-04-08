@@ -1,12 +1,12 @@
 //navbar JS
 
 $("document").ready(function(){
-    $(".sm-menu-icon-toggle").on('click', function() {
-        var x = document.getElementById("sm-menu");
-        if (x.className === "sm-menu") {
+    $(".menu-icon-toggle").on('click', function() {
+        var x = document.getElementById("menu");
+        if (x.className === "menu") {
             x.className += " visible";
         } else {
-            x.className = "sm-menu";
+            x.className = "menu";
         }
     })
 });
@@ -18,10 +18,10 @@ $("document").ready(function(){
         console.log(y);
         var x = document.getElementById(y);
         console.log(x);
-        if (x.className === "sm-submenu-cols") {
+        if (x.className === "submenu-cols") {
             x.className += " visible";
         } else {
-            x.className = "sm-submenu-cols";
+            x.className = "submenu-cols";
         }
     })
 });

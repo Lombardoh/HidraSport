@@ -11,24 +11,30 @@
     <h2>De atletas para atletas</h2>
 </section>
 
-<section id="main" class="container-fluid">
+<section id="main" class="">
     <div class="row">
         {% for seccion in secciones %}
         <div class="col-sm-6 section-item">
             <div class="img-main">
                 <img src="{% static seccion.imagen.url %}" alt="">
             </div>
+<!--
             <h2>{{ seccion.nombre }}</h2>
 
             <a href="/productos/{{seccion.categorias.nombre}}"
                class="btn btn-primary">
                 Ver mas
             </a>
+-->
         </div>
         {% endfor %}
     </div>
 </section>
 
+<div class="row col-sm-12">
+    <div class="red col-sm-6">a</div>
+    <div class="blue col-sm-6">b</div>
+</div>
 
 <section id="bestof" class="container-fluid">
     <div class="bestof-title">
