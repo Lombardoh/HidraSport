@@ -3,7 +3,7 @@
 ::after {
     margin: 0;
     padding: 0;
-    
+
 }
 
 html,
@@ -14,6 +14,8 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 10px;
 }
+
+
 
 .top-item a {
     text-decoration: none;
@@ -45,7 +47,7 @@ section {
 /*-------------------Hero----------------*/
 
 .hero {
-    
+
     width: 100%;
     height: 70vh;
     background: url("../static/hero.jfif") center no-repeat;
@@ -73,15 +75,35 @@ section {
 
 /*-------------------main----------------*/
 
-
-.section-item {
-    
+.img-main{
+    position: relative;
 }
 
-.img-main {
-    background-color: red;
-    max-height: 50vh;
-    overflow: hidden;
+.section-item{
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.overlay {
+    
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 1); /* Black see-through */
+    color: #f1f1f1;
+    width: 100%;
+    z-index: 10;
+
+
+}
+
+.section-name{
+    position: absolute;
+    color: white;
+    font-weight: bolder;
+    font-size: 3rem;
+    top: 45%;
+    left: 45%;
+    z-index: 2;
 }
 
 /*-------------------Best----------------*/
@@ -122,7 +144,7 @@ section {
 .catalog{
     margin-top: 5rem;
     margin-bottom: 5rem;
-    
+
 }
 .test{
     background-color: red;
@@ -157,11 +179,11 @@ section {
 
 .article-detail{
     margin-bottom: 3rem;
-    
+
 }
 
 .left-column{
-    
+
 }
 
 .small-imgs{
@@ -215,8 +237,8 @@ section {
 }
 
 .cart-background {
-    
-    
+
+
     background-color: white;
     border-radius: 1rem;
     font-size: 2.5rem;

@@ -28,7 +28,6 @@
 
 #nav-desktop {
         
-       
     }
 
 #nav-sm {
@@ -65,16 +64,17 @@ nav ul {
     text-decoration: none;
 }
 
-.menu li a:hover {
+.menu > li > a:hover {
+    border-bottom: solid 2px black;
     color: #7e7e7e;
     transition: all .3s;
-    background-color: #edeaea;
+    background-color: white;
 }
 
 
 .submenu {
     position: absolute;
-    background: #edeaea;
+    background: white;
     opacity: 0;
     visibility: hidden;
     transition: opacity 1.5s;
@@ -106,6 +106,9 @@ nav ul {
     height: 4.5rem;
 }
 
+.submenu-subcats{
+    padding: 0;
+}
 
 .search {
     max-height: 3rem;
@@ -121,8 +124,7 @@ nav ul {
 }
 
 .logo {
-
-    width: 22rem;
+    
 }
 
 
@@ -134,7 +136,7 @@ nav ul {
 }
 
 
-@media screen and (max-width: 1064px) {
+@media screen and (max-width: 1199px) {
     #search-basket{
         display: none;
     }

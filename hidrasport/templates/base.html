@@ -26,23 +26,23 @@
             <li class="top-item"><a href="/register">Crear Cuenta</a></li>
             <li class="top-item"><a href="/login/">Iniciar sesion</a></li>
             {% endif %}
-            <li class="top-item"><a href="/cart-detail/">carrito</a></li>
+            <li class="top-item"><a href="/cart_detail/">carrito</a></li>
         </ul>
     </div>
 </section>
 
 <nav id="nav-desktop" class="nav-desktop d-flex justify-content-center">
-    <div class="nav-bar col-sm-10 d-flex justify-content-between ">
-        <div class=""><span class="navbar-brand w-100"><a href="/"><img src="{% static 'logo.jpeg' %}" class="logo" alt=""></a></span></div>
-        <ul class="menu">
+    <div class="nav-bar col-sm-10 row">
+        <div class="col-sm-3 col-xl-2"><a href="/"><img src="{% static 'logo.jpeg' %}" class="logo" alt=""></a></div>
+        <ul class="col-sm-9 col-xl-8 menu">
             {% for cat in destacadas %}
             <li><a href="/productos/{{cat.nombre}}">{{cat.nombre}}</a>
                 <ul class="submenu row">
                     {% for col in cat.subcatcol_set.all %}
                     <li class="submenu-cols col-sm-3"><a href="/productos/{{cat.nombre}}-{{col.nombre}}"> {{ col.nombre }}</a>
-                        <ul>
+                        <ul class="submenu-subcats">
                             {%for subcat in col.subcategorias_set.all %}
-                            <li class="submenu-subcats"><a href="{{cat.nombre}} {{col.nombre}}">{{subcat.nombre}}</a></li>
+                            <li class=""><a href="/productos/{{cat.nombre}}-{{col.nombre}}-{{subcat.nombre}}">{{subcat.nombre}}</a></li>
                             {% endfor %}
                         </ul>
                     </li>
@@ -52,7 +52,7 @@
             {% endfor %}
         </ul>
 
-        <div id="search-basket">
+        <div class="col-sm-2" id="search-basket">
             <div class="carrito-icon"><i class="icon-shopping-cart icon-large"></i></div>
         </div>
     </div>
