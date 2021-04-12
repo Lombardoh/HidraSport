@@ -34,6 +34,8 @@ $("document").ready(function () {
         var num = index + 1;
         $(value).attr("data-attrib","productImg"+ num);
     });
+    
+    $('[data-attrib = productImg1]').addClass('active');
 });
 
 $("document").ready(function () {

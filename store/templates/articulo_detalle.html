@@ -3,11 +3,10 @@
 
 {% block page_content %}
 
-
-<div class="container">
-    <div class="row article-detail d-flex justify-content-between">
+<div class="container-fluid d-flex justify-content-center">
+    <div class="row article-detail  col-sm-11">
         <div class="row col-sm-8 left-column">
-            <div class="small-imgs wrap col-sm-4">
+            <div class="small-imgs wrap col-sm-2">
                 {% for image in images %}
                 <div class="small-img-container">
                     <img src="{% static image.image.url %}" alt="">
@@ -15,6 +14,7 @@
                 {% endfor %}
             </div>
             <div class="big-imgs col-sm-8">
+               
                 {% for image in images %}
                 <div class="big-img-container">
                     <img src="{% static image.image.url %}" alt="">
