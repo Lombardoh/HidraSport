@@ -12,6 +12,8 @@ def index(request):
     subcategorias = Subcategorias.objects.all()
     subcatcol = SubCatCol.objects.all()
     
+   
+    
     context = {
         "secciones": secciones,
         "lomejor": lomejor,
