@@ -26,7 +26,8 @@
             <li class="top-item"><a href="/register">Crear Cuenta</a></li>
             <li class="top-item"><a href="/login/">Iniciar sesion</a></li>
             {% endif %}
-            <li class="top-item"><a href="/cart_detail/">carrito</a></li>
+            <li class="top-item"><a href="{% url 'cart_show' %}">carrito</a>
+            <!--<li class="top-item"><a href="/cart_detail/">carrito</a></li>-->
         </ul>
     </div>
 </section>

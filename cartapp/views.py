@@ -42,6 +42,10 @@ def cart_clear(request):
     cart.clear()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
+def cart_show(request):
+    cart = Cart(request)
+    cart.show()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
 def cart_detail(request):
