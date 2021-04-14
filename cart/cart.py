@@ -15,12 +15,10 @@ class Cart(object):
             cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
         
+            
+    def add(self, product, talle, quantity=1, action=None):
         
-    def show(self):
-        print("showing")
-    
-    def add(self, product, quantity=1, action=None):
-        
+        print(talle)
         
         id = product.id
         newItem = True
@@ -32,6 +30,10 @@ class Cart(object):
                 'name': product.name,
                 'quantity': 1,
                 'price': str(product.price),
+                'codigo': product.codigo,
+                'subcodigo': product.subcodigo,
+                'image': product.image.url,
+                'talle': talle,
                 
             }
         else:
@@ -52,6 +54,7 @@ class Cart(object):
                     'name': product.name,
                     'quantity': 1,
                     'price': str(product.price),
+                    
                 }
 
         self.save()

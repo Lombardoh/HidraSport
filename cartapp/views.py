@@ -5,10 +5,10 @@ from django.http import HttpResponseRedirect
 from store.models import Product, Categorias, Secciones
 
 #@login_required(login_url="/users/login") uncomment to only allow authenticad users to use cart
-def cart_add(request, id):
+def cart_add(request, id, talle):
     cart = Cart(request)
     product = Product.objects.get(id=id)
-    cart.add(product=product)
+    cart.add(product=product, talle=talle)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 

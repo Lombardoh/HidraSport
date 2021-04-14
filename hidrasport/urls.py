@@ -25,5 +25,6 @@ urlpatterns = [
     path('', include('store.urls')), #include the app where the URLS is
     path('', include('cartapp.urls')),
     path('', include("django.contrib.auth.urls")),  
+    
 
 ]

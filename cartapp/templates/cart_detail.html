@@ -22,7 +22,11 @@
         </div>
         <div class="row col-sm-9">
            <div class="col-sm-5">
-            {{value.name}} 
+            {{value.name}}
+            {{value.product_id}}
+            {{value.codigo}}
+            {{value.subcodigo}}
+            {{value.talle}}
             </div>
             <div class="col-sm-2">
                 <a href="{% url 'item_clear'  value.product_id %}">Eliminar</a>

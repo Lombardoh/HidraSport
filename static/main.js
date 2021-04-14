@@ -27,7 +27,13 @@ $("document").ready(function(){
 });
 
 
+//article detail
 
+$("document").ready(function(){
+    $('.talle-button').on('click', function(){
+        console.log("test");
+    })
+});
 
 $("document").ready(function () {
     $.each($(".big-imgs img"), function(index, value){
@@ -48,12 +54,11 @@ $("document").ready(function () {
 $(document).ready(function() {
     $('.small-imgs img').on('click', function() {
         var imgNumber = $(this).attr('data-attrib');
-
+        
         $('.active').removeClass('active');
         $('[data-attrib = '+imgNumber+']').addClass('active');
         //      $(this).addClass('active');
     });
-
 });
 
 // Fancier version https://gist.github.com/985283 admin filter collapse

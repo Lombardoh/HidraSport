@@ -14,7 +14,7 @@
                 {% endfor %}
             </div>
             <div class="big-imgs col-sm-9">
-               
+
                 {% for image in images %}
                 <div class="big-img-container">
                     <img src="{% static image.image.url %}" alt="">
@@ -25,11 +25,17 @@
         </div>
 
         <div class="col-sm-4 right-column">
-            <h1>{{ articulo.name }}</h1>
-            <h3>{{articuli.price}}</h3>
+            <h1>{{articulo.name}}</h1>
+            <h3>{{articulo.price}}</h3>
             <h5>Seleccionar Talle</h5>
-            <p>ver medios de pago</p>
-            S M L
+
+            {% for x in articulo.talles_set.all %}
+
+                <h2 class="talle-button">{{x.talle}}</h2>
+                <h2>{{x.cantidad}}</h2>
+            {% endfor %}
+
+
             <p>Calcular envios</p>
 
             <p>Descripcion</p>
@@ -37,7 +43,7 @@
 
             <p>Tabla de talles</p>
 
-            <p>Compartir</p>
+            <a href="{% url 'cart_add' articulo.pk 'small' %}" class="btn btn-primary">Agregar al carrito</a>
 
         </div>
 
