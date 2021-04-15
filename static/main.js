@@ -1,7 +1,7 @@
 //navbar JS
 
-$("document").ready(function(){
-    $(".menu-icon-toggle").on('click', function() {
+$("document").ready(function () {
+    $(".menu-icon-toggle").on('click', function () {
         var x = document.getElementById("menu");
         if (x.className === "menu") {
             x.className += " visible";
@@ -11,8 +11,8 @@ $("document").ready(function(){
     })
 });
 
-$("document").ready(function(){
-    $(".arrow").on('click', function() {
+$("document").ready(function () {
+    $(".arrow").on('click', function () {
         var y = this.id.split(" ");
         y = y[0] + "-submenu-cols";
         console.log(y);
@@ -27,63 +27,82 @@ $("document").ready(function(){
 });
 
 
-//article detail
+//article detail talles and button
 
-$("document").ready(function(){
-    $('.talle-button').on('click', function(){
-        console.log("test");
+$("document").ready(function () {
+
+    $('.talle-button').on('click', function () {
+        const x = document.getElementsByClassName('talle-button');
+        for(var i=0; i<x.length; i++){
+            x[i].className="talle-button";
+        }
+        
+        this.className+=" selected";
+
+        
     })
 });
 
+$("document").ready(function(){
+    $('#buy-link').on('click', function(){
+        const talle = document.getElementsByClassName('selected');
+        document.getElementById('buy-link').href += $(talle[0]).text();
+    })
+});
+
+//article detail talles and button imgs 
+
 $("document").ready(function () {
-    $.each($(".big-imgs img"), function(index, value){
+    $.each($(".big-imgs img"), function (index, value) {
         var num = index + 1;
-        $(value).attr("data-attrib","productImg"+ num);
+        $(value).attr("data-attrib", "productImg" + num);
     });
-    
+    const x = document.getElementsByClassName('talle-button');
+    x[0].className+= " selected";
     $('[data-attrib = productImg1]').addClass('active');
 });
 
 $("document").ready(function () {
-    $.each($(".small-imgs img"), function(index, value){
+    $.each($(".small-imgs img"), function (index, value) {
         var num = index + 1;
-        $(value).attr("data-attrib","productImg"+ num);
+        $(value).attr("data-attrib", "productImg" + num);
     });
 });
 
-$(document).ready(function() {
-    $('.small-imgs img').on('click', function() {
+$(document).ready(function () {
+    $('.small-imgs img').on('click', function () {
         var imgNumber = $(this).attr('data-attrib');
-        
+
         $('.active').removeClass('active');
-        $('[data-attrib = '+imgNumber+']').addClass('active');
+        $('[data-attrib = ' + imgNumber + ']').addClass('active');
         //      $(this).addClass('active');
     });
 });
 
 // Fancier version https://gist.github.com/985283 admin filter collapse
 
-$(document).ready(function($){
+$(document).ready(function ($) {
     ListFilterCollapsePrototype = {
-        bindToggle: function(){
+        bindToggle: function () {
             var that = this;
-            this.$filterEl.click(function(){
+            this.$filterEl.click(function () {
                 that.$filterList.slideToggle();
             });
         },
-        init: function(filterEl) {
+        init: function (filterEl) {
             this.$filterEl = $(filterEl).css('cursor', 'pointer');
             this.$filterList = this.$filterEl.next('ul').hide();
             this.bindToggle();
         }
     }
+
     function ListFilterCollapse(filterEl) {
         this.init(filterEl);
     }
     ListFilterCollapse.prototype = ListFilterCollapsePrototype;
 
-    $(document).ready(function(){
-        $('#changelist-filter').children('h3').each(function(){
+    $(document).ready(function () {
+        $('#changelist-filter').children('h3').each(function () {
             var collapser = new ListFilterCollapse(this);
         });
     });

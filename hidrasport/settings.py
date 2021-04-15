@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'register',
     'cart',
     'cartapp',
+    'orders',
     'import_export',
     'crispy_forms',
     'whitenoise',

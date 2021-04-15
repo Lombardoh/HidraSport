@@ -16,7 +16,7 @@ class ImagesAdmin(admin.TabularInline):
 
 class TallesAdmin(admin.TabularInline):
     model = Talles
-        
+            
     
 #admin registers
 
@@ -35,6 +35,7 @@ class CategoriastAdmin(admin.ModelAdmin):
 class SubcategoriasAdmin(admin.ModelAdmin):
     list_display = ("nombre", "destacada")
     pass
+
 
 @admin.register(Importar)
 class ImportarAdmin(ImportExportModelAdmin):
@@ -125,7 +126,6 @@ class TallesAdmin(ImportExportModelAdmin):
     
     def get_pk(self, obj):
         return obj.product.pk
-    
     
 
 

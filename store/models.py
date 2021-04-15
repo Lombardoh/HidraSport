@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 class Categorias(models.Model):
     nombre = models.CharField(max_length=20)
@@ -56,6 +57,9 @@ class Importar(models.Model):
         return self.name
     class Meta:
         verbose_name_plural = "Importar"
+        
+        
+
     
 class Product(models.Model):
     codigo_de_barras= models.CharField(max_length=50)

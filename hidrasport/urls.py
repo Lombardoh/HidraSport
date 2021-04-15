@@ -19,12 +19,13 @@ from django.conf.urls import include, url
 from register import views as V
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', V.register, name="register"),
     path('', include('store.urls')), #include the app where the URLS is
     path('', include('cartapp.urls')),
     path('', include("django.contrib.auth.urls")),  
-    
+    path('', include('orders.urls')),    
 
 ]

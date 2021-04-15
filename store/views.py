@@ -53,16 +53,6 @@ def filtro(request, product):
     }
     return render(request, "filtro.html", context)
 
-#def filtro(request, categoria):
-#    
-#    print(categoria)
-#
-#    aux = categoria.split()
-#    
-#    print(len(aux))
-#    
-#    return render(request, 'filtro.html', {})
-
 def articulo_detalle(request, pk):
     articulo = Product.objects.get(pk=pk)
     images = Images.objects.filter(product=pk)
@@ -73,3 +63,4 @@ def articulo_detalle(request, pk):
         "images": images 
     }
     return render(request, 'articulo_detalle.html', context)
+

@@ -35,8 +35,6 @@ def item_decrement(request, id):
     cart.decrement(product=product)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
-
-
 def cart_clear(request):
     cart = Cart(request)
     cart.clear()
@@ -46,7 +44,7 @@ def cart_show(request):
     cart = Cart(request)
     cart.show()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-
+    
 
 def cart_detail(request):
     destacadas=Categorias.objects.filter(destacada=True)
