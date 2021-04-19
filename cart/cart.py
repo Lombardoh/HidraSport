@@ -16,7 +16,7 @@ class Cart(object):
         self.cart = cart
         
             
-    def add(self, product, talle, quantity=1, action=None):
+    def add(self, product, talle='s', quantity=1, action=None):
         
         print(talle)
         
