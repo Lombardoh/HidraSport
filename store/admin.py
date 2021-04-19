@@ -40,9 +40,16 @@ class SubcategoriasAdmin(admin.ModelAdmin):
 @admin.register(Importar)
 class ImportarAdmin(ImportExportModelAdmin):
     
-    list_display = ("id", 'codigo','subcodigo',"name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', "image",'talle', 'cantidad')
+    list_display = ("id", 'codigo','subcodigo',"name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', 'talle', 'cantidad')
     
-    actions = ['completar_productos_y_talles']
+    actions = ['completar_productos_y_talles', 'delete_all']
+    
+    
+    
+    def delete_all(self, request, queryset):
+        while Importar.objects.count():
+            ids = Importar.objects.values_list('pk', flat=True)[:500]
+            Importar.objects.filter(pk__in = ids).delete()
     
     def completar_productos_y_talles(self, request, queryset):
         imported = (
