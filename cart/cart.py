@@ -85,6 +85,8 @@ class Cart(object):
                 break
             else:
                 print("Something Wrong")
+                
+    
 
     def clear(self):
         # empty cart
