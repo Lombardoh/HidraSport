@@ -22,22 +22,6 @@ def checkout(request):
     
     cart = Cart(request)
     cart.clear()
-#    order_id = request.session.get('order_id')
-#    order_obj = None
-#    try:
-#        order_obj = Order.objects.get(id=order_id)
-#    except:
-#        order_id=None
-#        
-#    
-#    if order_id ==None:
-#        Order.objects.create(user=user)
-    
-    
-    
-
-    
-        
         
     
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))

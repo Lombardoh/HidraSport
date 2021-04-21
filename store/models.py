@@ -58,9 +58,7 @@ class Importar(models.Model):
         
     
 class Product(models.Model):
-    codigo_de_barras= models.CharField(max_length=50)
     codigo = models.CharField(max_length=50)
-    subcodigo = models.CharField(max_length=50)
     name = models.CharField(max_length=100)
     descripcion = models.CharField(max_length=50, blank=True, null=True)
     sexo = models.CharField(max_length=50, blank=True, null=True)
@@ -86,12 +84,11 @@ class Product(models.Model):
     
     
 class Talles(models.Model):
-    codigo_de_barras= models.CharField(max_length=50)
+    
     codigo = models.CharField(max_length=50)
     subcodigo = models.CharField(max_length=50)
     product = models.ForeignKey(Product, null = True, blank = True, on_delete=models.CASCADE)
     talle = models.CharField(max_length=20, blank=True, null=True)
-    codigo_de_barras = models.CharField(max_length=100)
     largo = models.CharField(max_length=50, blank=True, null=True)
     cadera = models.CharField(max_length=50, blank=True, null=True)
     manga = models.CharField(max_length=50, blank=True, null=True)

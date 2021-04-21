@@ -62,15 +62,17 @@ class ImportarAdmin(ImportExportModelAdmin):
             
             if Product.objects.filter(codigo__contains = imp.codigo):     
                 z = Product.objects.all().get(codigo = imp.codigo)
-                if Talles.objects.filter(~Q(subcodigo__contains = imp.subcodigo), codigo__contains = imp.codigo):
+                t = Talles.objects.filter(Q(talle = imp.talle) & Q(codigo = imp.codigo))
+                if len(t)<1:
                     
                     
-                    t = Talles(product = Product.objects.get(id=z.id), talle = imp.talle,codigo = imp.codigo, subcodigo = imp.subcodigo, codigo_de_barras = imp.codigo_de_barras, largo = imp.largo, cadera = imp.cadera, manga = imp.manga, siza = imp.siza, tiro = imp.tiro, bajo_busto = imp.bajo_busto, cintura = imp.cintura, cantidad =imp.cantidad)
+                    t = Talles(product = Product.objects.get(id=z.id), talle = imp.talle, codigo = imp.codigo, subcodigo = imp.subcodigo, largo = imp.largo, cadera = imp.cadera, manga = imp.manga, siza = imp.siza, tiro = imp.tiro, bajo_busto = imp.bajo_busto, cintura = imp.cintura, cantidad =imp.cantidad)
                     t.save()
+                    
             else:
-                p = Product(name = imp.name, codigo = imp.codigo, codigo_de_barras = imp.codigo_de_barras, price = imp.price, descripcion = imp.descripcion , sexo = imp.sexo, color = imp.color, guard = imp.guard, telas = imp.telas,diseño = imp.diseño, detalle_color = imp.detalle_color)
+                p = Product(name = imp.name, codigo = imp.codigo, price = imp.price, descripcion = imp.descripcion , sexo = imp.sexo, color = imp.color, guard = imp.guard, telas = imp.telas, diseño = imp.diseño, detalle_color = imp.detalle_color)
                 p.save()
-                t = Talles(product = Product.objects.get(id=p.id), talle = imp.talle, codigo = imp.codigo, subcodigo = imp.subcodigo, codigo_de_barras = imp.codigo_de_barras, largo = imp.largo, cadera = imp.cadera, manga = imp.manga, siza = imp.siza, tiro = imp.tiro, bajo_busto = imp.bajo_busto, cintura = imp.cintura, cantidad =imp.cantidad)
+                t = Talles(product = Product.objects.get(id=p.id), talle = imp.talle, codigo = imp.codigo, subcodigo = imp.subcodigo, largo = imp.largo, cadera = imp.cadera, manga = imp.manga, siza = imp.siza, tiro = imp.tiro, bajo_busto = imp.bajo_busto, cintura = imp.cintura, cantidad =imp.cantidad)
                 t.save()
             
             
@@ -78,7 +80,7 @@ class ImportarAdmin(ImportExportModelAdmin):
 @admin.register(Product)
 class ProductAdmin(ImportExportModelAdmin):
     
-    list_display = ("id", 'codigo','subcodigo', "name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color',)
+    list_display = ("id", 'codigo', "name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color',)
     list_filter = ("name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color',)
     inlines = [ImagesAdmin, TallesAdmin]
     
