@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from store.models import Product, Categorias, Secciones, Images, Talles, Subcategorias, SubCatCol
 from functools import reduce
 from django.db.models import Count, Max, Q
-
+import os
 # def function name
 
 def index(request):
@@ -24,24 +24,22 @@ def index(request):
 
 def filtro(request, product):
     
-    print(product)
-    
     aux = product.split('-')
     
     
-    query = Q(categorias__nombre=aux[0])
+    articulos = Product.objects.filter(categorias__nombre__in=aux)
     
-    articulos = Product.objects.filter(query)
+     
     
-    print(articulos)
+    list_of_ids = []
     
-    for p in range(1, len(aux)):
-        query = Q(categorias__nombre=aux[p])
-        articulos = articulos.filter(query)
-                   
-    print(query)
-    
-    
+    for x in articulos:
+        if os.path.isfile("static/"+x.image.url):
+            list_of_ids.append(x.id)
+#            
+    articulos = Product.objects.filter(id__in=list_of_ids)
+    print(list_of_ids)
+#    articulos = Product.objects.filter(id__in=list_of_ids)
     
     destacadas=Categorias.objects.filter(destacada=True)
     banner=Categorias.objects.filter(nombre=aux[0])

@@ -6,6 +6,7 @@ from django.db.models import Count, Max
 from django.core.management.color import no_style
 from django.db import connection
 from django.db.models import Q
+import os
 
 admin.site.site_header = "HidraSport Admin"
 
@@ -29,7 +30,7 @@ class SubCatColAdmin(admin.ModelAdmin):
     pass
 
 class CategoriastAdmin(admin.ModelAdmin):
-    list_display = ("nombre", "destacada")
+    list_display = ("id", "nombre", "destacada")
     pass
 
 class SubcategoriasAdmin(admin.ModelAdmin):
@@ -84,50 +85,42 @@ class ProductAdmin(ImportExportModelAdmin):
     list_filter = ("name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color',)
     inlines = [ImagesAdmin, TallesAdmin]
     
-    #actions = ['remover_duplicados', 'popular_productos']
+    actions = ['asociar_imagenes',]
     
     class Media:
         js = ['main.js']
     
-    def popular_productos(self, request, queryset):
-        tallesACrear = (
-        Product.objects.all()
-        )
+    def asociar_imagenes(self, request, queryset):
+        products = Product.objects.all()
         
-        for talle in tallesACrear:
-            t = Talles(product = Product.objects.get(id=talle.id), talle = "m")
-            t.save()
-        #t = Talles(product= Product.objects.get(id=self.id), talle = "m")
-        #t.save()
+        for p in products:
+            
+            aux = "products/"+ p.name + "/" + p.descripcion + "_" + p.color
+            
+            if p.guard != "-":
+                aux = aux + "_" + p.guard
+            
+            
+            if os.path.isfile(aux+"_FRENTE.png") == False:
+                p.image = aux + "_DORSO.png"
+            else:
+                p.image = aux + "_FRENTE.png"
+            
+            
+            
         
+            
+            
+            
+            p.save()
         
     
-    def remover_duplicados(self, request, queryset):
-        unique_fields = ['name', 'descripcion','sexo', 'color', 'guard', 'diseño', 'detalle_color']
-
-        duplicates = (
-        Product.objects.values(*unique_fields)
-        .order_by()
-        .annotate(max_id=Max('id'), count_id=Count('id'))
-        .filter(count_id__gt=1)
-        )
-
-        for duplicate in duplicates:
-            (
-                Product.objects
-                .filter(**{x: duplicate[x] for x in unique_fields})
-                .exclude(id=duplicate['max_id'])
-                .delete()
-            )
-    
-    
-    #def lista_categorias(self, obj):
-    #    return ", ".join([str(p) for p in #obj.categorias.all()])
+      
 
 
 @admin.register(Talles)
 class TallesAdmin(ImportExportModelAdmin):
-    #resource_class = TallesResource
+    
     list_display = ('get_pk', 'get_name', 'id', 'product', 'talle', 'cantidad')
     
     def get_name(self, obj):

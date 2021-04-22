@@ -31,7 +31,6 @@ class Cart(object):
                 'quantity': 1,
                 'price': str(product.price),
                 'codigo': product.codigo,
-                'subcodigo': product.subcodigo,
                 'image': product.image.url,
                 'talle': talle,
                 
