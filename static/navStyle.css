@@ -1,5 +1,7 @@
 /*-------------------top-line--------------------*/
-
+a{
+    text-decoration: none;
+}
 .top-line {
     position: relative;
     color: white;
@@ -7,7 +9,6 @@
     height: 4rem;
     z-index: 2;
     background-color: black;
-
     font-size: 1.2rem;
     font-weight: bold;
     text-transform: uppercase;
@@ -60,6 +61,7 @@ nav ul {
     display: block;
     padding: 15px 20px;
     color: #353535;
+    font-weight: 700;
     font-family: 'univers', 'open sans';
     text-decoration: none;
 }
@@ -81,26 +83,31 @@ nav ul {
     min-height: 5rem;
 }
 
+
 .menu li:hover .submenu {
     visibility: visible;
     opacity: 1;
 }
 
+.submenu-cols{
+    margin-top: 0rem;;
+}
 
 .submenu-cols a {
     margin-top: 1.2rem;
     display: block;
     height: 10rem;
-    color: #959393;
+    color: black;
+    font-weight: 500;
     font-family: 'Open sans';
     text-decoration: none;
-    font-size: 2.5rem;
+    font-size: 2.75rem;
     text-decoration: none;
 }
 
 .submenu-cols li a {
     display: block;
-    color: #afabab;
+    
     font-family: 'Open sans';
     text-decoration: none;
     height: 4.5rem;
@@ -156,6 +163,7 @@ nav ul {
     
     #nav-sm {
         display: contents;
+        
     }
 
 
@@ -170,18 +178,23 @@ nav ul {
     }
 
     .navMenu {
+        
         padding-top: 1rem;
         margin-bottom: 1rem;
         text-transform: uppercase;
     }
 
-    .menu-icon-toggle {
-        font-size: 2.25rem;
-        padding-left: 2rem;
-        padding-top: 0.75rem;
-
+    .menu-icon-toggle {        
+        display: contents;
+        font-size: 3rem;   
     }
-
+    
+    .fa-bars{
+        margin-left: 2rem;
+        text-decoration: none;;
+    }
+    
+    
     .menu-bar-icon i {
         text-decoration: none;
         color: black;
@@ -194,8 +207,8 @@ nav ul {
 
     .carrito-icon {
         font-size: 2rem;
-        padding-right: 2rem;
-
+        margin-top: 0;;
+        padding-right: 6rem;
     }
 
     .menu-list {
@@ -243,12 +256,7 @@ nav ul {
         margin-left: 2rem;
     }
 
-    .menu-icon-toggle {
-        display: contents;
-        font-size: 3rem;
-        padding-right: 2rem;
-        padding-top: 1.25rem;
-    }
+    
 
     .menu-icon-toggle i {
         text-decoration: none;
@@ -280,7 +288,7 @@ nav ul {
         position: absolute;
         width: 100%;
         height: 100vh;
-        top: 4rem;
+        
 
         background: white;
         z-index: 2;
@@ -289,6 +297,14 @@ nav ul {
 
         transition: 0.3s;
         transform: translate(-100vw, 0%);
+    }
+
+    .submenu-item a{
+        font-size: 2rem;
+        padding-top: 1rem;
+        padding-left: 2rem;
+        text-decoration: none;
+        color: black;
     }
 
     .visible {

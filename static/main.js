@@ -1,3 +1,6 @@
+const domContainer = document.querySelector('#like_button_container');
+ReactDOM.render("test", domContainer);
+
 //navbar JS
 
 $("document").ready(function () {
@@ -12,10 +15,23 @@ $("document").ready(function () {
 });
 
 $("document").ready(function () {
+    $(".menu-icon-toggle-x").on('click', function () {
+        var x = document.getElementById("menu");
+        var y = document.getElementsByClassName("submenu-cols");
+        
+        x.className = "menu";
+        
+        for(var i=0; y.length; i++)
+            y[i].className = "submenu-cols";
+        
+    })
+});
+
+$("document").ready(function () {
     $(".arrow").on('click', function () {
         var y = this.id.split(" ");
         y = y[0] + "-submenu-cols";
-        console.log(y);
+        
         var x = document.getElementById(y);
         console.log(x);
         if (x.className === "submenu-cols") {
