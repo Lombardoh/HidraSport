@@ -81,15 +81,25 @@ class ImportarAdmin(ImportExportModelAdmin):
 @admin.register(Product)
 class ProductAdmin(ImportExportModelAdmin):
     
-    list_display = ("id", 'codigo', "name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color',)
+    list_display = ("id", 'codigo', "name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', 'image', 'secundaria')
     list_filter = ("name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color',)
     inlines = [ImagesAdmin, TallesAdmin]
     
-    actions = ['asociar_imagenes',]
+    actions = ['asociar_imagenes', 'fix_names']
     
     class Media:
         js = ['main.js']
     
+    def fix_names(self, request, queryset):
+        products = Product.objects.all()
+
+        for p in products:
+            p.name = p.name.replace(' ', '_')
+            p.descripcion = p.descripcion.replace(' ', '_')
+            p.color = p.color.replace(' ', '_')
+            p.save()
+
+
     def asociar_imagenes(self, request, queryset):
         products = Product.objects.all()
         
@@ -99,16 +109,31 @@ class ProductAdmin(ImportExportModelAdmin):
             
             if p.guard != "-":
                 aux = aux + "_" + p.guard
-            
-            
-            if os.path.isfile(aux+"_FRENTE.png") == False:
+            if p.diseño != "-":
+                aux = aux + "_" + p.diseño
+            if p.detalle_color != "-":
+                aux = aux + "_" + p.detalle_color
+
+
+            if os.path.isfile("static/media/" + aux + "_FRENTE.png") == True:
+                p.image = aux + "_FRENTE.png"
+            elif os.path.isfile("static/media/" + aux +"_DORSO.png") == True:
                 p.image = aux + "_DORSO.png"
             else:
-                p.image = aux + "_FRENTE.png"
+                p.image = "default"
+
+            if os.path.isfile("static/media/" + aux +"_ESPALDA.png") == True:
+                p.secundaria = aux + "_ESPALDA.png"
             
             
             
-        
+
+            if (os.path.isfile("static/media/" + aux + "_FRENTE.png") == True) and not Images.objects.filter(image = aux + "_FRENTE.png"):
+                Images.objects.create(product = Product.objects.get(id = p.id), image = aux + "_FRENTE.png")
+            if (os.path.isfile("static/media/" + aux + "_ESPALDA.png") == True) and not Images.objects.filter(image = aux + "_ESPALDA.png"):
+                Images.objects.create(product = Product.objects.get(id = p.id), image = aux + "_ESPALDA.png")    
+            if (os.path.isfile("static/media/" + aux + "_DORSO.png") == True) and not Images.objects.filter(image = aux + "_DORSO.png"):
+                Images.objects.create(product = Product.objects.get(id = p.id), image = aux + "_DORSO.png")
             
             
             

@@ -25,15 +25,17 @@
         </div>
 
         <div class="col-sm-4 right-column">
-            <h1>{{articulo.name}}</h1>
+            <h1>{{articulo.name}} {{articulo.descripcion}} {{articulo.color}}</h1>
             <h3>{{articulo.price}}</h3>
             <h5>Seleccionar Talle</h5>
 
-            {% for x in articulo.talles_set.all %}
+            <div class="d-flex flex-row talles_display">
+                {% for x in articulo.talles_set.all %}
 
-                <h2 class="talle-button">{{x.talle}}</h2>
-                <h2>{{x.cantidad}}</h2>
-            {% endfor %}
+                <p class="talle-button p-2">{{x.talle}}</p>
+                
+                {% endfor %}
+            </div>
 
 
             <p>Calcular envios</p>

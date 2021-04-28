@@ -34,12 +34,11 @@ def filtro(request, product):
     list_of_ids = []
     
     for x in articulos:
-        if os.path.isfile("static/"+x.image.url):
+        if os.path.isfile("static/" + x.image.url):
             list_of_ids.append(x.id)
-#            
+            
     articulos = Product.objects.filter(id__in=list_of_ids)
     print(list_of_ids)
-#    articulos = Product.objects.filter(id__in=list_of_ids)
     
     destacadas=Categorias.objects.filter(destacada=True)
     banner=Categorias.objects.filter(nombre=aux[0])

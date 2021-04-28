@@ -180,7 +180,7 @@ section {
 }
 
 .article-detail{
-    margin-bottom: 20rem;
+    margin-bottom: 25rem;
     margin-top: 2.5rem;
     
 }
@@ -204,6 +204,22 @@ section {
 
 .big-imgs img.active{
     opacity: 1;
+}
+
+.talles_display{
+    display: inline;
+}
+
+.talle-button{
+    border: black solid 1px;
+    margin-right: 1.5rem;
+    padding: 0.5rem 1rem!important;
+    
+}
+
+.selected{
+    background-color: black;
+    color: white;
 }
 
 /*-------------------filter styles--------------*/

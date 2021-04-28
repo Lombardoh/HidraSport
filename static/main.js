@@ -1,6 +1,3 @@
-const domContainer = document.querySelector('#like_button_container');
-ReactDOM.render("test", domContainer);
-
 //navbar JS
 
 $("document").ready(function () {
