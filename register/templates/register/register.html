@@ -13,20 +13,23 @@
 
     <form method="post" action="">
         {% csrf_token %}
-        <label for="{{form.username.label}}">Nombre</label><br>
+        <label for="{{form.username.label}}">Nombre de usuario</label><br>
         {{form.username}}<br><br>
-
+        {{form.username.errors}}
         <label for="{{form.email.label}}">{{form.email.label}}</label><br>
         {{form.email}}<br><br>
-
-        <label for="{{form.email.label}}">Contraseña</label><br>
+        {{form.email.errors}}
+        <label for="{{form.password1.label}}">Contraseña</label><br>
         {{form.password1}}<br><br>
 
-        <label for="{{form.email.label}}">Confirmar contraseña</label><br>
+        <label for="{{form.password2.label}}">Confirmar contraseña</label><br>
         {{form.password2}}<br><br>
-
+        {{form.password2.errors}}
+        
         <input type="submit" value="Crear usuario" name="Crear usuario" class="btn btn-dark btn-lg btn-block">
+        
     </form>
+    
 </div>
 
 {% endblock %}
