@@ -6,8 +6,14 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from cart.cart import Cart
 # Create your views here.
-@login_required
+
 def checkout(request):
+
+    
+    if str(request.user) == "AnonymousUser":
+        
+        return redirect("register")
+    
     
     user = request.user
     cart = request.session.get('cart')
@@ -23,5 +29,4 @@ def checkout(request):
     cart = Cart(request)
     cart.clear()
         
-    
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
