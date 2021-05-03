@@ -26,10 +26,10 @@ def filtro(request, product):
     
     aux = product.split('-')
     
-    
-    articulos = Product.objects.filter(categorias__nombre__in=aux)
-    
-     
+    for x in aux:
+        articulos = Product.objects.filter(categorias__nombre=x)
+    print(aux)
+    print(articulos)
     
     list_of_ids = []
     

@@ -21,15 +21,17 @@
                 {% for articulo in articulos %}
 
                 <div class="article col-sm-6 col-lg-3">
-                    <img src="{% static articulo.image.url %}" alt="">
-                    <h4>{{articulo.name}} {{articulo.descripcion}} {{articulo.color}}</h4>
-                    <p>{{ articulo.price }}</p>
-                <a href="{% url 'articulo_detalle' articulo.pk %}"
-                   class="btn btn-primary">
-                    Ver mas
-                </a>
-                <a href="{% url 'cart_add' articulo.pk 'a'%}" class="btn btn-primary">Agregar al carrito</a>
-
+                    <div class="article-img">
+                        <img src="{% static articulo.image.url %}" alt="">
+                    </div>
+                    <div class="article-text">
+                        <h4>{{articulo.name}} {{articulo.descripcion}} {{articulo.color}}</h4>
+                        <p>{{ articulo.price }}</p>
+                        <a href="{% url 'articulo_detalle' articulo.pk %}" class="btn btn-primary">
+                            Ver mas
+                        </a>
+                        <a href="{% url 'cart_add' articulo.pk 'a'%}" class="btn btn-primary">Agregar al carrito</a>
+                    </div>
                 </div>
                 {% endfor %}
             </div>
