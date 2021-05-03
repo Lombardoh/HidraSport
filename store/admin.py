@@ -105,8 +105,10 @@ class ProductAdmin(ImportExportModelAdmin):
         
         for p in products:
             
-            aux = "products/"+ p.name + "/" + p.descripcion + "_" + p.color
+            aux = "products/" + p.name.lower() + "/" + p.descripcion + "_" + p.color
             
+
+
             if p.guard != "-":
                 aux = aux + "_" + p.guard
             if p.diseño != "-":
@@ -115,11 +117,12 @@ class ProductAdmin(ImportExportModelAdmin):
                 aux = aux + "_" + p.detalle_color
 
 
-            aux.replace(' ', '_')
+            aux = aux.replace(' ', '_')
+            
 
             if os.path.isfile("static/media/" + aux + "_FRENTE.png") == True:
                 p.image = aux + "_FRENTE.png"
-            elif os.path.isfile("static/media/" + aux +"_DORSO.png") == True:
+            elif os.path.isfile("static/media/" + aux + "_DORSO.png") == True:
                 p.image = aux + "_DORSO.png"
             else:
                 p.image = "default"
