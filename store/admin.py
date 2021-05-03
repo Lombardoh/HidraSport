@@ -94,9 +94,9 @@ class ProductAdmin(ImportExportModelAdmin):
         products = Product.objects.all()
 
         for p in products:
-            p.name = p.name.replace(' ', '_')
-            p.descripcion = p.descripcion.replace(' ', '_')
-            p.color = p.color.replace(' ', '_')
+            p.name = p.name.replace('_', ' ')
+            p.descripcion = p.descripcion.replace('_', ' ')
+            p.color = p.color.replace('_', ' ')
             p.save()
 
 
@@ -114,6 +114,8 @@ class ProductAdmin(ImportExportModelAdmin):
             if p.detalle_color != "-":
                 aux = aux + "_" + p.detalle_color
 
+
+            aux.replace(' ', '_')
 
             if os.path.isfile("static/media/" + aux + "_FRENTE.png") == True:
                 p.image = aux + "_FRENTE.png"
