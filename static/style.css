@@ -145,13 +145,13 @@ section {
 
 .article{
     display: block;
-    margin: 0px;
+    margin: 2rem 0rem;
     padding: 0px;
     position: relative;
     min-height: 50rem;
     max-width: auto;
-    overflow-y: hidden;
     overflow-x:auto;
+    vertical-align:middle;
     word-wrap:normal;
     white-space:nowrap;
     margin-bottom: a l5rem;
@@ -332,7 +332,7 @@ section {
     background-color: black;
     height: 15vh;
     padding-top: 4rem;
-    min-height: 30vh;
+    min-height: 40vh;
 }
 
 .footer h2{
@@ -357,13 +357,13 @@ section {
     color: grey;
 }
 
+/*----pop messages----*/
 
 #msg{
     position: absolute;
-    font-size: 3rem;
+    font-size: 2.5rem;
     right: 10;
     bottom: 10;
     z-index: 10;
-    width: 40rem;
-
+    border-radius: 10px;
 }
