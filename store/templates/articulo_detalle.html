@@ -50,23 +50,15 @@
         </div>
 
     </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            
+           <div class="btn btn-success" id="msg">{{message}}</div> 
+            
+        {% endfor %}
+     {% endif %}
 </div>
 
-<!--
-
-<section class="articles container-fluid">
-    <div class="row">
-        
-        <div class="row col-sm-4">
-            <h1>detalle</h1>
-            <h4>{{ articulo.titulo }}</h4>
-            <p>{{ articulo.precio }}</p>
-        </div>
-
-    </div>
-</section>
-
-
--->
 
 {% endblock %}

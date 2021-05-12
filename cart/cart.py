@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 
+
 class Cart(object):
 
     def __init__(self, request):
@@ -18,7 +19,7 @@ class Cart(object):
             
     def add(self, product, talle='s', quantity=1, action=None):
         
-        print(talle)
+        
         
         id = product.id
         newItem = True
@@ -55,6 +56,7 @@ class Cart(object):
                     'price': str(product.price),
                     
                 }
+        
 
         self.save()
 

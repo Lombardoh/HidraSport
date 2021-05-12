@@ -3,12 +3,14 @@ from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
 from django.http import HttpResponseRedirect
 from store.models import Product, Categorias, Secciones
+from django.contrib import messages
 
 #@login_required(login_url="/users/login") uncomment to only allow authenticad users to use cart
 def cart_add(request, id, talle):
     cart = Cart(request)
     product = Product.objects.get(id=id)
     cart.add(product=product, talle=talle)
+    messages.success(request, "El producto fue agreagado al carrito")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
