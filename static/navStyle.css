@@ -39,7 +39,7 @@ nav {
     background-color: white;
     
     font-size: 3rem;
-    z-index: 1;
+    z-index: 6;
 
 }
 
@@ -81,6 +81,7 @@ nav ul {
     visibility: hidden;
     transition: opacity 1.5s;
     min-height: 5rem;
+    z-index: 3;
 }
 
 

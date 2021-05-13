@@ -18,25 +18,32 @@ class ImagesAdmin(admin.TabularInline):
 class TallesAdmin(admin.TabularInline):
     model = Talles
             
-    
+class SubCatColInline(admin.TabularInline):
+    model = SubCatCol
+
+class SubcategoriasInline(admin.TabularInline):
+    model = Subcategorias
+
 #admin registers
 
 class SeccionesAdmin(admin.ModelAdmin):
     list_display = ("nombre", "categorias", "imagen")    
     pass
 
-class SubCatColAdmin(admin.ModelAdmin):
-    list_display = ("nombre", "destacada")
-    pass
-
-class CategoriastAdmin(admin.ModelAdmin):
+@admin.register(Categorias)
+class CategoriastAdmin(ImportExportModelAdmin):
     list_display = ("id", "nombre", "destacada")
+    inlines =[SubCatColInline]
     pass
 
+@admin.register(SubCatCol)
+class SubCatColAdmin(admin.ModelAdmin):
+    list_display = ("categoria", "nombre", "destacada", "id")
+    inlines = [SubcategoriasInline]
+
+@admin.register(Subcategorias)
 class SubcategoriasAdmin(admin.ModelAdmin):
-    list_display = ("nombre", "destacada")
     pass
-
 
 @admin.register(Importar)
 class ImportarAdmin(ImportExportModelAdmin):
@@ -145,7 +152,7 @@ class ProductAdmin(ImportExportModelAdmin):
             p.save()
         
     
-      
+
 
 
 @admin.register(Talles)
@@ -166,10 +173,6 @@ class ImagesAdmin(ImportExportModelAdmin):
     resource_class = ImagesResource
     pass
 
-
-admin.site.register(Categorias, CategoriastAdmin)
-admin.site.register(Subcategorias, SubcategoriasAdmin)
-admin.site.register(SubCatCol, SubCatColAdmin)
 admin.site.register(Secciones, SeccionesAdmin)
 
 #---------- admin actions

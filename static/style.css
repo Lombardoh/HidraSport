@@ -143,6 +143,10 @@ section {
 
 /*-------------------articles------------*/
 
+.article-detail{
+
+}
+
 .article{
     display: block;
     margin: 2rem 0rem;
@@ -210,7 +214,7 @@ section {
 .article-detail{
     margin-bottom: 25rem;
     margin-top: 2.5rem;
-    
+    height: 80vh;
 }
 
 .small-imgs img{

@@ -26,6 +26,7 @@ class Subcategorias(models.Model):
     def __str__(self):
         return self.nombre
     
+
 class Importar(models.Model):
     codigo_de_barras = models.CharField(max_length=50)
     codigo = models.CharField(max_length=50)
