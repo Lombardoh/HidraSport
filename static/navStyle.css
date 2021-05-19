@@ -82,6 +82,9 @@ nav ul {
     transition: opacity 1.5s;
     min-height: 5rem;
     z-index: 3;
+    width: 102%;
+    overflow: hidden;
+    left: 0;
 }
 
 
@@ -91,13 +94,14 @@ nav ul {
 }
 
 .submenu-cols{
-    margin-top: 0rem;;
+    margin-top: 0rem;
+    width: 15%;
 }
 
 .submenu-cols a {
     margin-top: 1.2rem;
     display: block;
-    height: 10rem;
+    height: 6rem;
     color: black;
     font-weight: 500;
     font-family: 'Open sans';
@@ -108,7 +112,7 @@ nav ul {
 
 .submenu-cols li a {
     display: block;
-    
+    color: darkslategrey;
     font-family: 'Open sans';
     text-decoration: none;
     height: 4.5rem;

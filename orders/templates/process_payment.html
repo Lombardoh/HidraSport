@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+POST
+{% for q in query %}
+{{q}}
+{% endfor %}
+{% endblock %}

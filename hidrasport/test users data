@@ -1,0 +1,32 @@
+issuer
+{
+    "id": 759341255,
+    "nickname": "TESTF7V7HS7F",
+    "password": "qatest3561",
+    "site_status": "active",
+    "email": "test_user_49392292@testuser.com"
+}
+payer
+{
+    "id": 759338461,
+    "nickname": "TETE774602",
+    "password": "qatest3773",
+    "site_status": "active",
+    "email": "test_user_49424415@testuser.com"
+}
+TEST-1cd046db-92cc-4cf6-9808-63e0b45d9b11
+
+{
+    "transaction_amount": 100,
+    "token": "843826ebb57ea3c38bc6797fb11c4341",
+    "description": "Blue shirt",
+    "installments": 1,
+    "payment_method_id": "visa",
+    "issuer_id": "310",
+    "sponsor_id":759338461,
+    "payer": {
+        "email": "test_user_49424415@testuser.com",
+        "id": 759338461,
+        "type":"customer"
+    }
+}

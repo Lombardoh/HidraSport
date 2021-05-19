@@ -11,6 +11,13 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import mercadopago
+
+
+
+sdk = mercadopago.SDK("TEST-1cd046db-92cc-4cf6-9808-63e0b45d9b11")
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,7 +33,6 @@ SECRET_KEY = ')0c_t^pu-f7%4v5j)^6x@zy#v!t%ps%ty#b8w&vz8&x#_g-zxa'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*'] #134.209.65.1
-
 
 # Application definition
 
@@ -45,6 +51,7 @@ INSTALLED_APPS = [
     'import_export',
     'crispy_forms',
     'whitenoise',
+    'mercadopago',
 ]
 
 MIDDLEWARE = [

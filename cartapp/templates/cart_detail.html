@@ -47,7 +47,14 @@
     <a href="{% url 'checkout' %} ">Comprar</a>
 </div>
 
-
+<form action="/process_payment/" method="POST">{% csrf_token %}
+  <script
+    src="https://www.mercadopago.com.ar/integrations/v1/web-tokenize-checkout.js"
+    data-public-key="TEST-1cd046db-92cc-4cf6-9808-63e0b45d9b11"
+    data-transaction-amount="100.00">
+  </script>
+</form>
+      
 
 
 <br><br><br><br><br>

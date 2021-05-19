@@ -24,5 +24,4 @@ urlpatterns = [
         views.cart_add,
         name='cart_add'
     ),
-
 ]
