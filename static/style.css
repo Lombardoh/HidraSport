@@ -6,14 +6,6 @@
 
 }
 
-.red{
-    background-color: red;
-}
-
-.blue{
-    background-color: blue;
-}
-
 html,
 body {
     height: 100%;
@@ -268,17 +260,13 @@ section {
 
 /*-------------------cart--------------*/
 
-.carrito{
-    margin-top: 20rem;
+.cart-frame{
+    padding-top: 4rem;
+    margin-bottom: 4rem;
 }
 
-.cart-background {
-
-
-    background-color: white;
-    border-radius: 1rem;
-    font-size: 2.5rem;
-
+.carrito{
+    margin-top: 20rem;
 }
 
 .cartitem {

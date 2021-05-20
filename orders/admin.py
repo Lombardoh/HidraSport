@@ -8,7 +8,7 @@ class ProductsInOrderAdmin(admin.TabularInline):
     
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ("id", "user","totalPrice",)   
+    list_display = ("id", "user","totalPrice", "timestamp")   
     inlines = [ProductsInOrderAdmin,]
     pass
 

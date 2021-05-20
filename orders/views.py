@@ -13,6 +13,11 @@ def checkout(request):
         
         return redirect("register")
 
+    token = request.POST.get("token")
+    payment_method_id = request.POST.get("payment_method_id")
+    installments = request.POST.get("installments")
+    issuer_id = request.POST.get("issuer_id")
+
     user = request.user
     cart = request.session.get('cart')
     
@@ -30,11 +35,12 @@ def checkout(request):
 
 
 def process_payment(request):
-    token = request.POST.get("token")
-    payment_method_id = request.POST.get("payment_method_id")
-    installments = request.POST.get("installments")
-    issuer_id = request.POST.get("issuer_id")
-    return render(request, 'process_payment.html', {})
+    pass
+#     token = request.POST.get("token")
+#     payment_method_id = request.POST.get("payment_method_id")
+#     installments = request.POST.get("installments")
+#     issuer_id = request.POST.get("issuer_id")
+#     return render(request, 'process_payment.html', {})
 
 def test(request):
     return render(request, 'test.html', {})
