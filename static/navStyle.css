@@ -57,12 +57,15 @@ nav ul {
     display: inline-block;
 }
 
+.fa fa-times a{
+text-decoration: none;
+}
 .menu > li > a {
     display: block;
     padding: 15px 20px;
     color: #353535;
     font-weight: 700;
-    font-family: 'univers', 'open sans';
+    
     text-decoration: none;
 }
 
@@ -104,7 +107,7 @@ nav ul {
     height: 6rem;
     color: black;
     font-weight: 500;
-    font-family: 'Open sans';
+    
     text-decoration: none;
     font-size: 2.75rem;
     text-decoration: none;
@@ -113,7 +116,7 @@ nav ul {
 .submenu-cols li a {
     display: block;
     color: darkslategrey;
-    font-family: 'Open sans';
+    
     text-decoration: none;
     height: 4.5rem;
 }

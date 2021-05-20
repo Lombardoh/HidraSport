@@ -23,6 +23,10 @@ body {
     font-size: 10px;
 }
 
+a{
+    font-family: 'Signika', sans-serif;
+}
+
 
 
 .top-item a {
@@ -143,9 +147,7 @@ section {
 
 /*-------------------articles------------*/
 
-.article-detail{
 
-}
 
 .article{
     display: block;
@@ -155,7 +157,7 @@ section {
     min-height: 50rem;
     max-width: auto;
     overflow-x:auto;
-    vertical-align:middle;
+    
     word-wrap:normal;
     white-space:nowrap;
     margin-bottom: a l5rem;
