@@ -158,7 +158,7 @@ class ProductAdmin(ImportExportModelAdmin):
 @admin.register(Talles)
 class TallesAdmin(ImportExportModelAdmin):
     
-    list_display = ('get_pk', 'get_name', 'id', 'product', 'talle', 'cantidad')
+    list_display = ('get_pk', 'subcodigo', 'get_name', 'id', 'product', 'talle', 'cantidad')
     
     def get_name(self, obj):
         return obj.product.name

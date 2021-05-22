@@ -3,7 +3,10 @@
 ::after {
     margin: 0;
     padding: 0;
+}
 
+.text-bolded{
+    font-weight: 900;
 }
 
 html,
@@ -265,17 +268,24 @@ section {
     margin-bottom: 4rem;
 }
 
-.carrito{
-    margin-top: 20rem;
-}
-
 .cartitem {
-    border-bottom: solid 1px;
-    padding: 2rem 2rem;
+    border-bottom: solid 1px grey;
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    padding-bottom: 2rem;
 }
 
-.lastrow {
-    background-color: yellow;
+.cartitem *{
+    text-decoration: none;
+    color: black;
+    
+}
+.product-details{
+    margin-top: 0rem;
+}
+
+.height-fix{
+    height: 0rem;
 }
 
 /*-------------------registration--------------*/
@@ -360,4 +370,10 @@ section {
     bottom: 10;
     z-index: 10;
     border-radius: 10px;
+}
+
+/*-----------orders-------------*/
+
+.orders{
+    font-size: 3rem;
 }

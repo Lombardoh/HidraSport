@@ -29,13 +29,16 @@ class Cart(object):
                 'userid': self.request.user.id,
                 'product_id': id,
                 'name': product.name,
+                'descripcion': product.descripcion,
+                'sexo': product.sexo,
+                'color': product.color,
                 'quantity': 1,
-                'price': str(product.price),
+                'price': product.price,
                 'codigo': product.codigo,
                 'image': product.image.url,
                 'talle': talle,
-                
             }
+            
         else:
             newItem = True
 

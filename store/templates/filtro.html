@@ -27,10 +27,17 @@
                     <div class="article-text">
                         <h4>{{articulo.name}} {{articulo.descripcion}} {{articulo.color}}</h4>
                         <p>{{ articulo.price }}</p>
-                        <a href="{% url 'articulo_detalle' articulo.pk %}" class="btn btn-primary">
+
+
+                        
+                        
+                        <a href="{% url 'articulo_detalle' articulo.pk %}" class="btn btn-dark">
                             Ver mas
                         </a>
-                        <a href="{% url 'cart_add' articulo.pk 'a'%}" class="btn btn-primary">Agregar al carrito</a>
+                        {% with articulo.talles_set.all|first as talle %}
+                            
+                        <a href="{% url 'cart_add' articulo.pk%}{{talle.talle}}" class="btn btn-success">Agregar al carrito</a>
+                        {% endwith %}
                     </div>
                 </div>
                 {% endfor %}

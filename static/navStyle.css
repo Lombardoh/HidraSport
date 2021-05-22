@@ -79,13 +79,14 @@ text-decoration: none;
 
 .submenu {
     position: absolute;
+    left: 7px !important;
     background: white;
     opacity: 0;
     visibility: hidden;
     transition: opacity 1.5s;
     min-height: 5rem;
     z-index: 3;
-    width: 102%;
+    width: 100%;
     overflow: hidden;
     left: 0;
 }

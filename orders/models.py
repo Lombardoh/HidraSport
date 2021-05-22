@@ -14,6 +14,9 @@ class Order(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     
 class ProductsInOrder(models.Model):
+    subcodigo = models.CharField(max_length=50)
     order = models.ForeignKey(Order, null=True, on_delete=models.SET_NULL, blank=True)
     product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL, blank=True)
+    talle = models.CharField(max_length=20)
+    
     
