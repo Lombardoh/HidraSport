@@ -137,6 +137,11 @@ text-decoration: none;
     margin-top: 1rem;
     margin-left: 3rem;
     max-width: 4rem;
+    
+}
+
+.carrito-icon *{
+    color: black;
 }
 
 .logo {

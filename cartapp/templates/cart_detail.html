@@ -8,10 +8,8 @@
 
 <div class="container cart-frame">
     <h2>Carrito({{request.session.cart|length}})</h2>
-
     <div class="row d-flex justify-content-around">
         <div class="col-sm-8">
-            
             {% for key,value in request.session.cart.items %}
             <div class="row cartitem">
                 <div class="col-sm-3">
@@ -22,7 +20,7 @@
                         <div class="col-sm-6 text-bolded">
                             {{value.price}}
                         </div>
-                        <div class="col-sm-6 d-flex justify-content-end">
+                        <div class="col-sm-5 d-flex justify-content-end">
                             <a href="{% url 'item_clear'  value.product_id %}"><i class="fa fa-times"></i></a>
                         </div>
                     </div>
@@ -36,45 +34,53 @@
                         <div class="col-sm-4">
                             Talle: {{value.talle}}
                             {% for talle in value.talles %}
-                                {{talle.talle}}
+                            {{talle.talle}}
                             {% endfor %}
                         </div>
                         <div class="col-sm-8">
-                                Cantidad: 
-                                <a href="{% url 'item_decrement' value.product_id %}">-</a>
-                                {{value.quantity}}
-                                <a href="{% url 'item_increment' value.product_id %}">+</a>
+                            Cantidad:
+                            <a href="{% url 'item_decrement' value.product_id %}">-</a>
+                            {{value.quantity}}
+                            <a href="{% url 'item_increment' value.product_id %}">+</a>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
                         Total {{ value.price|multiply:value.quantity }}
                     </div>
                 </div>
-                
+                <div class="cartitem-limit col-sm-11"></div>
             </div>
-            
-            
             {% endfor %}
         </div>
-        <div class="col-sm-4">
-            <a href="{% url 'checkout' %}"><div style="width: 100%; background-color: black; color: white;">pagar</div></a>
-            <div">
+        <div class="purchase_details col-sm-4">
+            <h1>Detalles de la compra</h1>
+            <div class="">
+                
+                direccion de entrega {{address}} <br>
+                Costo de productos {{total}}<br>
+                Envio<br>
+                Costo total<br>
+            </div>
+
+            <a href="{% url 'checkout' %}"><button style="width: 100%;" type="button"
+                    class="btn btn-dark btn-lg btn-block">Pagar</button></a>
+            <div>
                 <form action="{% url 'checkout' %}" method="POST">{% csrf_token %}
                     <script src="https://www.mercadopago.com.ar/integrations/v1/web-tokenize-checkout.js"
                         data-public-key="TEST-1cd046db-92cc-4cf6-9808-63e0b45d9b11" data-transaction-amount="100.00">
-                    </script> 
+                    </script>
                 </form>
-            </div>
-        </div>
-        
-    </div>
-
-
-    <div class="row justify-content-end">
-        <div class="col-sm-3">
-            <a href="{% url 'cart_clear'  %}">Vaciar carrito</a>
         </div>
     </div>
+
+</div>
+
+
+<div class="row justify-content-end">
+    <div class="col-sm-3">
+        <a href="{% url 'cart_clear'  %}">Vaciar carrito</a>
+    </div>
+</div>
 </div>
 
 {% endblock %}

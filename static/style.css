@@ -235,6 +235,25 @@ section {
     opacity: 1;
 }
 
+.right-column p{
+    font-size: 2rem;
+}
+
+.right-column h1{
+    font-size: 4rem;
+    font-weight: 900;
+}
+
+.right-column h2{
+    font-size: 3.25rem;
+}
+
+.talles{
+    margin: 2rem 0;
+    padding-top: 2rem;
+    border-top: solid 1px darkgrey;
+}
+
 .talles_display{
     display: inline;
 }
@@ -246,9 +265,22 @@ section {
     
 }
 
+.envios{
+    border-top: solid 1px darkgrey;
+    padding-top: 2rem;
+}
 .selected{
     background-color: black;
     color: white;
+}
+
+.share{
+    font-size: 2rem;
+}
+
+.share *{
+    color: black;
+    text-decoration: none;
 }
 
 /*-------------------filter styles--------------*/
@@ -269,17 +301,23 @@ section {
 }
 
 .cartitem {
-    border-bottom: solid 1px grey;
+    
     font-size: 2.5rem;
     margin: 2rem 0;
     padding-bottom: 2rem;
+    
 }
 
 .cartitem *{
     text-decoration: none;
     color: black;
-    
 }
+
+.cartitem-limit{
+    margin-top: 2rem;
+    border-bottom: solid 1px grey;
+}
+
 .product-details{
     margin-top: 0rem;
 }
@@ -376,4 +414,17 @@ section {
 
 .orders{
     font-size: 3rem;
+}
+.purchase_details{
+    font-size: 2rem;
+    background-color: #EEEEEE;
+    max-height: 50vh;
+}
+
+.purchase_details h1{
+    font-size: 3rem;
+}
+
+.purchase_details .btn{
+    margin-top: 68%;
 }

@@ -26,38 +26,49 @@
 
         <div class="col-sm-4 right-column">
             <h1>{{articulo.name}} {{articulo.descripcion}} {{articulo.color}}</h1>
-            <h3>{{articulo.price}}</h3>
-            <h5>Seleccionar Talle</h5>
+            <h2>${{articulo.price}}</h2>
 
-            <div class="d-flex flex-row talles_display">
-                {% for x in articulo.talles_set.all %}
+            <div class="talles">
+                <p>Seleccionar Talle</p>
 
-                <p class="talle-button p-2">{{x.talle}}</p>
-                
-                {% endfor %}
+                <div class="d-flex flex-row talles_display">
+                    {% for x in articulo.talles_set.all %}
+
+                    <p class="talle-button p-2">{{x.talle}}</p>
+
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="envios d-flex justify-content-between">
+                <p>Envios a todo el pais</p>
+                <p>Calcular envios</p>
+            </div>
+            <div class="d-flex justify-content-end">
+                <p>Tabla de talles</p>
             </div>
 
-
-            <p>Calcular envios</p>
-
-            <p>Descripcion</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate excepturi soluta, nulla ex praesentium ipsam voluptates tenetur doloremque perferendis ea aperiam eos corporis tempora expedita quos reiciendis culpa aliquam porro.</p>
-
-            <p>Tabla de talles</p>
-
-            <a href="{% url 'cart_add' articulo.pk%}" id="buy-link" class="btn btn-primary">Agregar al carrito</a>
-
+            <div class="d-flex justify-content-between" style="margin-top: 2rem;">
+                <p>Compartir</p>
+                <div class="share">
+                    <a href="whatsapp://send?text=http://127.0.0.1:8000/178" data-action="share/whatsapp/share"
+                        target="_blank">
+                        <i class="fa fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            <a href="{% url 'cart_add' articulo.pk%}" id="buy-link"><button style="width: 100%;" type="button"
+                    class="btn btn-dark btn-lg btn-block">Agregar al carrito</button></a>
         </div>
 
     </div>
 
     {% if messages %}
-        {% for message in messages %}
-            
-           <div class="btn btn-success" id="msg">{{message}}</div> 
-            
-        {% endfor %}
-     {% endif %}
+    {% for message in messages %}
+
+    <div class="btn btn-success" id="msg">{{message}}</div>
+
+    {% endfor %}
+    {% endif %}
 </div>
 
 

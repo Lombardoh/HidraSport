@@ -4,7 +4,9 @@ from store.models import Product, Categorias, Talles
 from cart.cart import Cart
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, request
-from cart.cart import Cart
+from register.models import Profile
+from django.contrib.admin.views.decorators import staff_member_required
+
 
 # Create your views here.
 
@@ -20,6 +22,7 @@ def checkout(request):
 
     user = request.user
     cart = request.session.get('cart')
+    profile = Profile.objects.get(id=user.id)
     total = 0
     o = Order.objects.create(user=user)    
     for key, value in cart.items():
@@ -30,6 +33,7 @@ def checkout(request):
         total += float(value['price']) * value['quantity']
 
     o.totalPrice = total
+    o.direccionEntrega = profile.address
     o.save()
     cart = Cart(request)
     #cart.clear()
@@ -37,7 +41,7 @@ def checkout(request):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
-
+@staff_member_required
 def order_list(request):
 
     orders = Order.objects.all()

@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
 from django.http import HttpResponseRedirect
 from store.models import Product, Categorias, Secciones
+from register.models import Profile
 from django.contrib import messages
 
 
@@ -52,9 +53,18 @@ def cart_show(request):
 
 def cart_detail(request):
     destacadas=Categorias.objects.filter(destacada=True)
-    
+    user = request.user
+    profile = Profile.objects.get(id=user.id)
+    cart = request.session.get('cart')
+    total = 0
+    address = profile.address
+    for key, value in cart.items():
+        total += float(value['price']) * value['quantity']
+
     context = {
         "destacadas": destacadas,
+        "total": total,
+        "address": address,
     }
     
     return render(request, 'cart_detail.html', context)

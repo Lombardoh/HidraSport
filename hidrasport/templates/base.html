@@ -29,6 +29,9 @@
             <li class="top-item"><a href="/login/">Iniciar sesion</a></li>
             {% endif %}
             <li class="top-item"><a href="/cart_detail/">carrito</a></li>
+            {% if user.is_staff %}
+            <li class="top-item"><a href="/order_list/">pedidos</a></li>
+            {% endif %}
         </ul>
     </div>
 </section>

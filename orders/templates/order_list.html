@@ -3,26 +3,36 @@
 {% block page_content %}
 
 
-    <div class="row col-ms-10 orders">
-        {% for order in orders %}
-        <div class="row">
-            <div class="col-sm-3">
-                usuario: {{order.user}}
-            </div>
-            <div class="col-sm-3">
-                Total: {{order.totalPrice}}
-            </div>
-            <div class="col-sm-3">
-               Direcction: {{order.direccionEntrega}}
-            </div>
-            Productos: <br>
+<table style="font-size: 3rem;">
+    <tr>
+        <th class="col-sm-1">Usuario</th>
+        <th class="col-sm-1">Total</th>
+        <th class="col-sm-3">direccionEntrega</th>
+        <th class="col-sm-3">Productos</th>
+    </tr>
+
+    {% for order in orders %}
+    <tr>
+        <td>
+            {{order.user}}
+        </td>
+        <td>
+            {{order.totalPrice}}
+        </td>
+        <td>
+            {{order.direccionEntrega}}
+        </td>
+        <td>
             {% for x in order.productsinorder_set.all %}
-                {{x.product.codigo}}{{x.subcodigo}}<br>
+                {{x.product.codigo}} <br>
             {% endfor %}
-            <br><br>
-        </div>  
-        {% endfor %}
-    </div>
+        </td>
+    </tr>
+    
+    {% endfor %}
+
+
+</table>
 {% endblock %}
 
 <!-- {% for x in order.productsinorder_set.all %}
