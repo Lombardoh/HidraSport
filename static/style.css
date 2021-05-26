@@ -326,6 +326,20 @@ section {
     height: 0rem;
 }
 
+.purchase_details{
+    font-size: 2rem;
+    background-color: #EEEEEE;
+    max-height: 50vh;
+}
+
+.purchase_details h1{
+    font-size: 3rem;
+}
+
+.purchase_details .btn{
+    margin-top: 68%;
+}
+
 /*-------------------registration--------------*/
 
 .creation-form {
@@ -414,17 +428,4 @@ section {
 
 .orders{
     font-size: 3rem;
-}
-.purchase_details{
-    font-size: 2rem;
-    background-color: #EEEEEE;
-    max-height: 50vh;
-}
-
-.purchase_details h1{
-    font-size: 3rem;
-}
-
-.purchase_details .btn{
-    margin-top: 68%;
 }

@@ -130,5 +130,22 @@ setTimeout(function(){
 },2000)
 
 
+//cart functions
 
 
+$("#postal-code, #domicilio, #sucursal").on("propertychange change keyup input paste", function(){
+    var costo = 990;
+    var code = $("#postal-code").val();
+    var entrega = $('input[name="entrega"]:checked').val()
+    console.log(entrega)
+    if (code < 1441)
+        costo= 450
+    else if (code > 1440 && code < 2943 || code > 6399 && code < 8181)
+        entrega === "domicilio" ? costo = 750: costo = 950;
+    else
+        entrega === "domicilio" ? costo = 990: costo = 1499;
+    
+
+    document.getElementById("delivery-cost").innerHTML = costo;
+    
+})

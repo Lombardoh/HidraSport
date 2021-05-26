@@ -55,10 +55,29 @@
         <div class="purchase_details col-sm-4">
             <h1>Detalles de la compra</h1>
             <div class="">
-                
+
                 direccion de entrega {{address}} <br>
                 Costo de productos {{total}}<br>
-                Envio<br>
+
+                <div class="d-flex justify-content-between">
+                    <div>Codigo postal</div> <div><input id="postal-code" type="number" value=3></div>
+                </div>
+                <br>
+                <input type="radio" id="domicilio" name="entrega" value="domicilio">
+                <label for="domicilio">Domicilio</label><br>
+                <input type="radio" id="sucursal" name="entrega" value="sucursal" checked="checked">
+                <label for="sucursal">Sucursal</label><br>
+                
+                
+                <div class="d-flex justify-content-between">
+                    <div id="auxid">
+                        Envio<br>
+                    </div>
+                    <div id="delivery-cost">
+                        Seleccione codigo postal
+                    </div>
+                </div>
+
                 Costo total<br>
             </div>
 
@@ -70,17 +89,17 @@
                         data-public-key="TEST-1cd046db-92cc-4cf6-9808-63e0b45d9b11" data-transaction-amount="100.00">
                     </script>
                 </form>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row justify-content-end">
+        <div class="col-sm-3">
+            <a href="{% url 'cart_clear'  %}">Vaciar carrito</a>
         </div>
     </div>
-
-</div>
-
-
-<div class="row justify-content-end">
-    <div class="col-sm-3">
-        <a href="{% url 'cart_clear'  %}">Vaciar carrito</a>
-    </div>
-</div>
 </div>
 
 {% endblock %}
