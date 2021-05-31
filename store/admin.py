@@ -48,11 +48,8 @@ class SubcategoriasAdmin(admin.ModelAdmin):
 @admin.register(Importar)
 class ImportarAdmin(ImportExportModelAdmin):
     
-    list_display = ("id", 'codigo','subcodigo',"name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', 'talle', 'cantidad')
-    
+    list_display = ('codigo','subcodigo',"name", "descripcion", "sexo", "color", "guard", "telas", "diseño", 'detalle_color', 'talle', 'cantidad', 'tamaño_caja')
     actions = ['completar_productos_y_talles', 'delete_all']
-    
-    
     
     def delete_all(self, request, queryset):
         while Importar.objects.count():
@@ -60,28 +57,27 @@ class ImportarAdmin(ImportExportModelAdmin):
             Importar.objects.filter(pk__in = ids).delete()
     
     def completar_productos_y_talles(self, request, queryset):
-        imported = (
-        Importar.objects.all()
-        )
+        imported = Importar.objects.all()
         
-        for imp in imported:
-            
-            
-            
+        for imp in imported:            
             if Product.objects.filter(codigo__contains = imp.codigo):     
                 z = Product.objects.all().get(codigo = imp.codigo)
                 t = Talles.objects.filter(Q(talle = imp.talle) & Q(codigo = imp.codigo))
                 if len(t)<1:
-                    
-                    
-                    t = Talles(product = Product.objects.get(id=z.id), talle = imp.talle, codigo = imp.codigo, subcodigo = imp.subcodigo, largo = imp.largo, cadera = imp.cadera, manga = imp.manga, siza = imp.siza, tiro = imp.tiro, bajo_busto = imp.bajo_busto, cintura = imp.cintura, cantidad =imp.cantidad)
+                    t = Talles(product = Product.objects.get(id=z.id), talle = imp.talle, codigo = imp.codigo, subcodigo = imp.subcodigo, largo = imp.largo, 
+                    cadera = imp.cadera, manga = imp.manga, siza = imp.siza, tiro = imp.tiro, bajo_busto = imp.bajo_busto, cintura = imp.cintura, 
+                    cantidad = imp.cantidad, ubicacion = imp.ubicacion, tamaño_caja = imp.tamaño_caja)
                     t.save()
-                    
+                    print(f"id: {z.id}, talle: {t.talle}")
+                
             else:
                 p = Product(name = imp.name, codigo = imp.codigo, price = imp.price, descripcion = imp.descripcion , sexo = imp.sexo, color = imp.color, guard = imp.guard, telas = imp.telas, diseño = imp.diseño, detalle_color = imp.detalle_color)
                 p.save()
-                t = Talles(product = Product.objects.get(id=p.id), talle = imp.talle, codigo = imp.codigo, subcodigo = imp.subcodigo, largo = imp.largo, cadera = imp.cadera, manga = imp.manga, siza = imp.siza, tiro = imp.tiro, bajo_busto = imp.bajo_busto, cintura = imp.cintura, cantidad =imp.cantidad)
+                t = Talles(product = Product.objects.get(id=p.id), talle = imp.talle, codigo = imp.codigo, subcodigo = imp.subcodigo, largo = imp.largo, 
+                cadera = imp.cadera, manga = imp.manga, siza = imp.siza, tiro = imp.tiro, bajo_busto = imp.bajo_busto, cintura = imp.cintura, 
+                cantidad = imp.cantidad, ubicacion = imp.ubicacion, tamaño_caja = imp.tamaño_caja)
                 t.save()
+                print(f"id: {p.id}, talle: {t.talle}")
             
             
 
@@ -158,13 +154,26 @@ class ProductAdmin(ImportExportModelAdmin):
 @admin.register(Talles)
 class TallesAdmin(ImportExportModelAdmin):
     
-    list_display = ('get_pk', 'subcodigo', 'get_name', 'id', 'product', 'talle', 'cantidad')
+    list_display = ('get_pk', 'subcodigo', 'get_name', 'id', 'product', 'talle', 'cantidad', 'ubicacion', 'tamaño_caja')
+    list_filter = ('subcodigo','product', 'talle', 'cantidad', 'ubicacion', 'tamaño_caja')
     
+    class Media:
+        js = ['main.js']
+
     def get_name(self, obj):
         return obj.product.name
     
     def get_pk(self, obj):
         return obj.product.pk
+    
+    actions = ['delete_all']
+    
+    
+    
+    def delete_all(self, request, queryset):
+        while Talles.objects.count():
+            ids = Talles.objects.values_list('pk', flat=True)[:500]
+            Talles.objects.filter(pk__in = ids).delete()
     
 
 

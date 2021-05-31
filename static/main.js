@@ -134,18 +134,53 @@ setTimeout(function(){
 
 
 $("#postal-code, #domicilio, #sucursal").on("propertychange change keyup input paste", function(){
-    var costo = 990;
+    let costo = 990;
     var code = $("#postal-code").val();
     var entrega = $('input[name="entrega"]:checked').val()
-    console.log(entrega)
+    let total = document.getElementById("products-cost")
+
     if (code < 1441)
         costo= 450
     else if (code > 1440 && code < 2943 || code > 6399 && code < 8181)
-        entrega === "domicilio" ? costo = 750: costo = 950;
+        entrega === "sucursal" ? costo = 750: costo = 950;
     else
-        entrega === "domicilio" ? costo = 990: costo = 1499;
-    
+        entrega === "sucursal" ? costo = 990: costo = 1499;
 
     document.getElementById("delivery-cost").innerHTML = costo;
-    
+
+    document.getElementById("total-cost").innerHTML = parseFloat(costo) + parseFloat(total.textContent)
+
+    document.getElementById("payment").href = "http://127.0.0.1:8000/checkout/" + code + "/" + entrega
 })
+
+$("document").ready(function () {
+    $.each($(".codigo-scanneado"), function (index, value) {
+        let num = index + 1;
+        $(value).attr("data-attrib", num);
+    });
+
+    $.each($(".codigo"), function (index, value) {
+        let  num = index + 1;
+        $(value).attr("data-attrib", "product" + num);
+    });
+    $.each($(".table-row"), function (index, value) {
+        let  num = index + 1;
+        $(value).attr("data-attrib", "row" + num);
+    });   
+});
+
+$("document").ready(function(){
+    "use strict"
+    $('.codigo-scanneado').on('propertychange change keyup input paste', function () {
+        let codigoScaneado = $(this).val();
+        let codigo = document.querySelector('[data-attrib = product' + $(this).attr('data-attrib') + ']').textContent;
+        codigo = codigo.replace(/\s/g, '');
+        
+        console.log(codigo + " y "+ codigoScaneado)
+
+        if(codigo === codigoScaneado){        
+            $('[data-attrib = row1').addClass('green')
+            console.log("True");
+        }
+    });
+});

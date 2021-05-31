@@ -26,10 +26,10 @@ def item_clear(request, id):
 
 
 
-def item_increment(request, id):
+def item_increment(request, id, talle):
     cart = Cart(request)
     product = Product.objects.get(id=id)
-    cart.add(product=product)
+    cart.add(product=product, talle=talle)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 

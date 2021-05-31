@@ -41,7 +41,7 @@
                             Cantidad:
                             <a href="{% url 'item_decrement' value.product_id %}">-</a>
                             {{value.quantity}}
-                            <a href="{% url 'item_increment' value.product_id %}">+</a>
+                            <a href="{% url 'item_increment' value.product_id value.talle %}">+</a>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
@@ -53,22 +53,49 @@
             {% endfor %}
         </div>
         <div class="purchase_details col-sm-4">
-            <h1>Detalles de la compra</h1>
+            <h1 class="d-flex justify-content-center">Detalles de la compra</h1>
             <div class="">
 
-                direccion de entrega {{address}} <br>
-                Costo de productos {{total}}<br>
-
-                <div class="d-flex justify-content-between">
-                    <div>Codigo postal</div> <div><input id="postal-code" type="number" value=3></div>
+                <div class="d-flex justify-content-between purchase_item">
+                    <div>
+                        Costo de productos
+                    </div>
+                    <div id="products-cost">
+                        {{total}}
+                    </div>
                 </div>
-                <br>
-                <input type="radio" id="domicilio" name="entrega" value="domicilio">
-                <label for="domicilio">Domicilio</label><br>
-                <input type="radio" id="sucursal" name="entrega" value="sucursal" checked="checked">
-                <label for="sucursal">Sucursal</label><br>
-                
-                
+
+                <div class="d-flex justify-content-between purchase_item">
+                    <div>
+                        Direccion
+                    </div>
+                    <div>
+                        {{address}}
+                    </div>
+                </div>
+
+
+                <div class="d-flex justify-content-between purchase_item">
+                    <div>
+                        Codigo postal
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <input style="max-width: 35%;" id="postal-code" type="number" value=3>
+                    </div>
+                </div>
+
+
+                <div class="d-flex justify-content-around purchase_item">
+                    <div>
+                        <input type="radio" id="sucursal" name="entrega" value="sucursal" checked="checked">
+                        <label for="sucursal">Sucursal</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="domicilio" name="entrega" value="domicilio">
+                        <label for="domicilio">Domicilio</label>
+                    </div>
+                </div>
+
                 <div class="d-flex justify-content-between">
                     <div id="auxid">
                         Envio<br>
@@ -78,18 +105,22 @@
                     </div>
                 </div>
 
-                Costo total<br>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        Costo total
+                    </div>
+                    <div id="total-cost">
+                        
+                    </div>
+                </div>
             </div>
 
-            <a href="{% url 'checkout' %}"><button style="width: 100%;" type="button"
+            
+            <a id="payment" href="http://127.0.0.1:8000/checkout/1400/domicilio"><button style="width: 100%;" type="button"
                     class="btn btn-dark btn-lg btn-block">Pagar</button></a>
-            <div>
-                <form action="{% url 'checkout' %}" method="POST">{% csrf_token %}
-                    <script src="https://www.mercadopago.com.ar/integrations/v1/web-tokenize-checkout.js"
-                        data-public-key="TEST-1cd046db-92cc-4cf6-9808-63e0b45d9b11" data-transaction-amount="100.00">
-                    </script>
-                </form>
-            </div>
+                        
+            
+            
         </div>
 
     </div>

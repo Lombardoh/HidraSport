@@ -3,29 +3,54 @@
 {% block page_content %}
 
 
-<table style="font-size: 3rem;">
+<table class="table d-flex justify-content-center" style="font-size: 3rem;">
     <tr>
-        <th class="col-sm-1">Usuario</th>
-        <th class="col-sm-1">Total</th>
-        <th class="col-sm-3">direccionEntrega</th>
-        <th class="col-sm-3">Productos</th>
+        <th scope="col" class="col-sm-1">Usuario</th>
+        <th scope="col" class="col-sm-1">N° de pedido</th>
+        <th scope="col" class="col-sm-2">direccion</th>
+        <th scope="col" class="col-sm-2">Total productos</th>
+        <th scope="col" class="col-sm-2">tipo de envio</th>
+        <th scope="col" class="col-sm-2">costo de envio</th>
+        <th scope="col" class="col-sm-1">Codigo postal</th>
+        <th scope="col" class="col-sm-2">Total general</th>
+        <th scope="col" class="col-sm-2">Productos</th>
+        <th scope="col" class="col-sm-1">status</th>
     </tr>
 
     {% for order in orders %}
     <tr>
+        
         <td>
             {{order.user}}
         </td>
         <td>
-            {{order.totalPrice}}
+            {{order.id}}
         </td>
         <td>
             {{order.direccionEntrega}}
         </td>
         <td>
+            {{order.products_cost}}
+        </td>
+        <td>
+            {{order.delivery_type}}
+        </td>
+        <td>
+            {{order.delivery_cost}}
+        </td>
+        <td>
+            {{order.postal_code}}
+        </td>
+        <td>
+            {{order.total_cost}}
+        </td>
+        <td>
             {% for x in order.productsinorder_set.all %}
-                {{x.product.codigo}} <br>
+                {{x.product.codigo}}{{x.subcodigo}} <br>
             {% endfor %}
+        </td>
+        <td>
+            {{order.status}}
         </td>
     </tr>
     
@@ -34,7 +59,3 @@
 
 </table>
 {% endblock %}
-
-<!-- {% for x in order.productsinorder_set.all %}
-        {{x.product.codigo}}
-        {% endfor %} -->

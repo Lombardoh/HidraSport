@@ -5,6 +5,10 @@
     padding: 0;
 }
 
+.green{
+    background-color: green!important;
+}
+
 .text-bolded{
     font-weight: 900;
 }
@@ -327,17 +331,22 @@ section {
 }
 
 .purchase_details{
-    font-size: 2rem;
+    font-size: 2.5rem;
     background-color: #EEEEEE;
     max-height: 50vh;
+    border-radius: 2%;
 }
 
 .purchase_details h1{
-    font-size: 3rem;
+    font-size: 4rem;
 }
 
 .purchase_details .btn{
-    margin-top: 68%;
+    margin-top: 4rem;
+}
+
+.purchase_item{
+    margin-top: 2rem;
 }
 
 /*-------------------registration--------------*/

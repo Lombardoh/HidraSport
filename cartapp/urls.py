@@ -24,4 +24,15 @@ urlpatterns = [
         views.cart_add,
         name='cart_add'
     ),
+
+    path(
+        'item_increment/<int:id>/',
+        views.item_increment, 
+        name='item_increment'
+    ),
+    path(
+        'item_increment/<int:id>/<str:talle>/',
+        views.item_increment,
+        name='item_increment'
+    ),
 ]

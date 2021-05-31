@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+
+<table class="table d-flex justify-content-center" style="font-size: 3rem;">
+    <tr>
+        <th scope="col" class="col-sm-1">Productos</th>
+        <th scope="col" class="col-sm-1">Producto scanneado</th>
+        <th scope="col" class="col-sm-1">N° de pedido</th>
+        <th scope="col" class="col-sm-1">Ubicacion y caja</th>
+
+    </tr>
+
+    {% for order in orders %}
+        {% for x in order.productsinorder_set.all %}
+        <tr>
+        <td class="table-row">
+            <div style="font-family: 'Libre Barcode 39', cursive;">
+                {{x.product.codigo}}{{x.subcodigo}}
+            </div>
+            <div class="codigo">
+                {{x.product.codigo}}{{x.subcodigo}}
+            </div>
+
+        </td>
+        <td>
+            <input class="codigo-scanneado" type="number" value="{{x.subcodigo}}">
+
+        </td>
+        <td>
+            {{order.id}}
+            
+        </td>
+        <td>
+            {{x.ubicacion}}
+            {{x.tamaño_caja}}
+        </td>
+        </tr>
+        {% endfor %}
+    {% endfor %}
+
+
+</table>
+{% endblock %}

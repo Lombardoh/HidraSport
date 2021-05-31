@@ -2,6 +2,8 @@ from decimal import Decimal
 from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from store.models import Talles
+from django.db.models import Q
 
 
 
@@ -17,11 +19,10 @@ class Cart(object):
         self.cart = cart
         
             
-    def add(self, product, talle='s', quantity=1, action=None):
-        
-        
+    def add(self, product, talle='s', quantity=1, action=None):       
         
         id = product.id
+        t = Talles.objects.all().get(Q(talle=talle) & Q(product__id=id))
         newItem = True
         if str(product.id) not in self.cart.keys():
 
@@ -37,6 +38,10 @@ class Cart(object):
                 'codigo': product.codigo,
                 'image': product.image.url,
                 'talle': talle,
+                'subcodigo': t.subcodigo,
+                'ubicacion': t.ubicacion,
+                'tamaño_caja': t.tamaño_caja,
+
             }
             
         else:
