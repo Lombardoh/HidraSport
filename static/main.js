@@ -171,16 +171,14 @@ $("document").ready(function () {
 
 $("document").ready(function(){
     "use strict"
+
     $('.codigo-scanneado').on('propertychange change keyup input paste', function () {
         let codigoScaneado = $(this).val();
         let codigo = document.querySelector('[data-attrib = product' + $(this).attr('data-attrib') + ']').textContent;
         codigo = codigo.replace(/\s/g, '');
         
-        console.log(codigo + " y "+ codigoScaneado)
-
         if(codigo === codigoScaneado){        
             $('[data-attrib = row1').addClass('green')
-            console.log("True");
         }
     });
 });
