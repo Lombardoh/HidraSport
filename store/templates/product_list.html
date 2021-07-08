@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+
+<section class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Codigo</th>
+            <th scope="col">Subcodigo</th>
+            <th scope="col">Nombre</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for producto in productos %}
+          <tr>
+            <th scope="row">{{producto.id}}</th>
+            <td>{{producto.codigo}}</td>
+            <td>{{producto.name}}</td>
+            <td>{{producto.descripcion}}</td>
+            <td>
+                {% for image in producto.images_set.all %}
+                <div style="max-width: 100px;">
+                    <img src="{% static image.image.url %}" alt="">
+                    {{image.id}}
+                </div>
+                {% endfor %}
+            </td>
+            <td>
+                <form action="{% url 'upload' producto.id %}"
+                method="POST"
+                class="dropzone"
+                id="my-awesome-dropzone">
+                {% csrf_token %}
+                    <div class="fallback">
+                        <input name="file" type="file" multiple />
+                    </div>
+                </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</section>
+
+
+
+
+{% endblock %}

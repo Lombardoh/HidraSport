@@ -52,6 +52,8 @@ def cart_show(request):
     
 
 def cart_detail(request):
+    if str(request.user) == "AnonymousUser":
+        return redirect("register")
     destacadas=Categorias.objects.filter(destacada=True)
     user = request.user
     profile = Profile.objects.get(id=user.id)

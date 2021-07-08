@@ -83,9 +83,7 @@ class Product(models.Model):
     class Meta:
         verbose_name_plural = "Productos"
     
-    
 class Talles(models.Model):
-    
     codigo = models.CharField(max_length=50)
     subcodigo = models.CharField(max_length=50)
     product = models.ForeignKey(Product, null = True, blank = True, on_delete=models.CASCADE)
@@ -100,6 +98,7 @@ class Talles(models.Model):
     ubicacion = models.CharField(max_length=50, blank=True, null=True)
     tamaño_caja = models.CharField(max_length=50, blank=True, null=True)
     cantidad = models.IntegerField(default = 0, blank=True, null=True)
+    cantidad2 = models.IntegerField(default = 0, blank=True, null=True)
     
     def __str__(self):
         return self.talle
