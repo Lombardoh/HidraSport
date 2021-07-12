@@ -4,45 +4,77 @@
 {% block page_content %}
 
 <section class="container">
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Codigo</th>
-            <th scope="col">Subcodigo</th>
-            <th scope="col">Nombre</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for producto in productos %}
-          <tr>
-            <th scope="row">{{producto.id}}</th>
-            <td>{{producto.codigo}}</td>
-            <td>{{producto.name}}</td>
-            <td>{{producto.descripcion}}</td>
-            <td>
-                {% for image in producto.images_set.all %}
-                <div style="max-width: 100px;">
-                    <img src="{% static image.image.url %}" alt="">
-                    {{image.id}}
-                </div>
-                {% endfor %}
-            </td>
-            <td>
-                <form action="{% url 'upload' producto.id %}"
-                method="POST"
-                class="dropzone"
-                id="my-awesome-dropzone">
-                {% csrf_token %}
-                    <div class="fallback">
-                        <input name="file" type="file" multiple />
-                    </div>
-                </form>
-            </td>
-          </tr>
+  <div>
+    {% for f in filter %}
+      <a style="font-size: 1.5rem; text-decoration: none; color: black;" href="{% url 'product_list' f %}">{{f}}</a>
+    {% endfor %}
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Codigo</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">descripcion</th>
+        <th scope="col">picking</th>
+        <th scope="col">stock</th>
+        <th scope="col">imagenes</th>
+        <th scope="col">cargar imagenes</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for producto in productos %}
+      <tr>
+        <th scope="row">{{producto.id}}</th>
+        <td>{{producto.codigo}}</td>
+        <td>{{producto.name}}</td>
+        <td>{{producto.descripcion}}</td>
+        <td>
+          {% for talle in producto.talles_set.all %}
+          <div class="row">
+            <div class="d-flex justify-content-between">
+              <div>{{talle.talle}}</div>
+              <div></div>
+              <div>{{talle.cantidad}}</div>
+            </div>
+          </div>
           {% endfor %}
-        </tbody>
-      </table>
+        </td>
+        <td>
+          {% for talle in producto.talles_set.all %}
+          <div class="d-flex justify-content-between">
+            <div>{{talle.talle}}</div>
+            <div></div>
+            <div>{{talle.cantidad2}}</div>
+          </div>
+          {% endfor %}
+        </td>
+        <td>
+            {% for image in producto.images_set.all %}
+            <div style="max-width: 100px;">
+              <img src="{% static image.image.url %}" alt="">
+              <form method="get" action="{% url 'delete' image.id %}">
+                <button type="button" class="btn btn-danger">Borrar</button>
+              </form>
+              
+              <a href=""></a>              
+            </div>
+            {% endfor %}
+        </td>
+        <td>
+          <form action="{% url 'upload' producto.id %}" method="POST" class="dropzone"
+            id="my-awesome-dropzone">
+            {% csrf_token %}
+            <div class="fallback">
+              <input name="file" type="file" multiple />
+            </div>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </section>
 
 

@@ -3,7 +3,7 @@ from store.models import Product, Categorias, Secciones, Images, Talles, Subcate
 from functools import reduce
 from django.db.models import Count, Max, Q
 import os
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 # def function name
 
 def index(request):
@@ -60,14 +60,26 @@ def articulo_detalle(request, pk):
     }
     return render(request, 'articulo_detalle.html', context)
 
-def product_list(request):
-    productos = Product.objects.all()
+def product_list(request, name):
+
+    prods = Product.objects.all()
+    filter = []
+    filter.append("all")
+
+    for prod in prods:
+        if prod.name not in filter:
+            filter.append(prod.name)
+
+    if name == "all":
+        productos = Product.objects.all()
+    else:
+        productos = Product.objects.filter(name = name)
     
     destacadas=Categorias.objects.filter(destacada=True)
     context = {
         'productos': productos,
         "destacadas": destacadas,
-        
+        "filter": filter        
     }
     return render(request, 'product_list.html', context)
 
@@ -77,7 +89,12 @@ def file_upload_view(request, id):
         my_file = request.FILES.get('file')
         obj = Product.objects.get(id=id)
         Images.objects.create(product = obj, image=my_file)
-        
     return HttpResponse('upload')
-    
+
+def file_delete_view(request, id):
+    #print(request.FILES)
+    obj = Images.objects.get(id = id)
+    obj.delete()
+        
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
